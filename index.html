@@ -1,1 +1,181 @@
+<!DOCTYPE html>
+<html lang="de" data-color-scheme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilal Boukayoua Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* ... Design-System-Variablen ... */
+      --color-white: #fff;
+      --color-black: #111;
+      --color-primary: #21808d;
+      --color-bg: #11191e;
+      --focus-ring: 0 0 0 3px rgba(33,128,141,0.4);
+      --font-family-base: 'Fira Code', monospace;
+    }
+    body {
+      font-family: var(--font-family-base);
+      background: var(--color-bg);
+      color: var(--color-white);
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .code-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.22;
+    }
+    .logo {
+      width: 70px; height: 70px;
+      background: url('https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/74ea7b27-6b2c-4fc5-b072-b850396e178e') center/contain no-repeat;
+      margin-right: 24px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 30px #21808d66);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 40px;
+      position: relative;
+      z-index: 2;
+    }
+    nav .site-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    nav .nav-links {
+      display: flex;
+      gap: 24px;
+      margin-left: auto;
+      font-size: 1rem;
+    }
+    nav .nav-links a {
+      color: var(--color-white);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+      cursor: pointer;
+    }
+    nav .nav-links a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+    .center-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 70vh;
+      text-align: center;
+      gap: 24px;
+      z-index: 1;
+      position: relative;
+      margin-top: 24px;
+    }
+    .welcome {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: 6px;
+      margin-bottom: 12px;
+    }
+    .roles-row {
+      margin: 14px 0 32px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+    .role-badge {
+      font-size: 16px;
+      color: #fff;
+      background: rgba(34,197,94,0.13);
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-weight: 500;
+      border: 1px solid rgba(34,197,94,0.22);
+      box-shadow: 0 1px 5px #1117;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .widgets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 24px;
+      margin-top: 44px;
+      width: 100%;
+      max-width: 900px;
+    }
+    .widget {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 11px;
+      padding: 28px 17px;
+      color: #fff;
+      font-size: 15px;
+      cursor: pointer;
+      text-align: left;
+      min-height: 100px;
+      transition: all .18s;
+      box-shadow: 0 2px 10px #0003;
+    }
+    .widget:hover {
+      background: rgba(255,255,255,0.14);
+      border-color: rgba(34,197,94,0.23);
+      transform: translateY(-4px) scale(1.011);
+    }
+    /* ... weitere Styles (z.B. für Unterseiten, Section-Switch, Kontakt, Footer, mobile, ...) ... */
+  </style>
+</head>
+<body>
+  <div class="code-bg"></div>
+  <nav>
+    <div class="logo"></div>
+    <div class="site-title">Bilal Boukayoua</div>
+    <div class="nav-links">
+      <a onclick="showSection('start')">Home</a>
+      <a onclick="showSection('cv')">CV / IT Profil</a>
+      <a onclick="showSection('projekte')">Projekte</a>
+      <a onclick="showSection('kontakt')">Kontakt</a>
+      <a onclick="showSection('recht')">Rechtliches</a>
+    </div>
+  </nav>
+  <main id="main-content">
+    <div id="start" class="center-content">
+      <div class="welcome">WELCOME</div>
+      <div class="roles-row">
+        <div class="role-badge">Wirtschaftsinformatiker & Freelancer IT Specialist</div>
+      </div>
+      <div>Engagierter Student der Wirtschaftsinformatik, erfahrener IT-Specialist (Freelancer) mit Fokus auf IT-Administration, Systemmigration und technische Beraterleistungen.</div>
+      <div class="widgets-grid">
+        <div class="widget" onclick="showSection('cv')"><strong>CV / IT-Profil</strong><br>Mein Lebenslauf, Skills und Background auf einen Blick.</div>
+        <div class="widget" onclick="showSection('projekte')"><strong>Projekte</strong><br>Ausgewählte IT-Projekte, Referenzen und Uni-Arbeiten.</div>
+        <div class="widget" onclick="showSection('kontakt')"><strong>Kontakt</strong><br>Schnell & unkompliziert Kontakt aufnehmen.</div>
+        <div class="widget" onclick="showSection('recht')"><strong>Rechtliches</strong><br>Impressum & Datenschutz.</div>
+      </div>
+    </div>
+    <!-- Weitere Sections wie Profil, Projekte, Kontakt, Recht ausklappbar ... -->
+  </main>
+  <script>
+    // Colorful background-Codeanimation
+    document.querySelector(".code-bg").innerHTML = Array.from({length: 12}).map(()=>
+      `<pre style="color: #${["06b6d4","a855f7","ec4899","fbbf24","10b981"][~~(Math.random()*5)]};padding:0 0 0 .5em;font-size:18px;opacity:.55;white-space:pre;pointer-events:none;position:absolute;top:${Math.random()*96}%;left:${Math.random()*97}%;transform:rotate(${Math.round((Math.random()-.5)*8)}deg);font-family:'Fira Code',monospace;">
+const user = "Bilal";
+let skills = ["Java", "Python", "SQL"];
+// ... more code
+</pre>`).join('');
+    function showSection(section) {
+      // Dummy, müsste ARIA+HTML für echte Unterseiten/Section Filled werden!
+      alert('Du hast "'+section+'" gewählt ☑️ (Funktion heute: noch Dummy)');
+    }
+  </script>
+</body>
+</html>
 
