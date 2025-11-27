@@ -193,16 +193,15 @@
       color: var(--text-muted);
     }
 
-    /* Kontaktbereich */
+    /* Kontaktbereich auf der Startseite */
     .contact-section {
-      margin-top: 14px;
+      margin-top: 10px;
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 26px;
+      gap: 24px;
     }
 
-    .contact-card,
-    .form-card {
+    .block {
       background: var(--bg-card);
       border-radius: 14px;
       border: 1px solid var(--border-soft);
@@ -210,8 +209,7 @@
       font-size: 14px;
     }
 
-    .contact-card h3,
-    .form-card h3 {
+    .block h3 {
       font-size: 15px;
       margin-bottom: 6px;
       font-weight: 600;
@@ -328,18 +326,18 @@
         <div class="brand-sub">Wirtschaftsinformatiker · IT Specialist Freelancer</div>
       </div>
       <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#cv">CV / Profil</a>
-        <a href="#projekte">Projekte</a>
-        <a href="#kontakt">Kontakt</a>
-        <a href="#rechtliches">Rechtliches</a>
+        <a href="index.html">Home</a>
+        <a href="cv.html">CV / Profil</a>
+        <a href="projekte.html">Projekte</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="rechtliches.html">Rechtliches</a>
       </div>
     </nav>
   </header>
 
   <main class="page">
     <!-- HERO & KURZPROFIL -->
-    <section id="home" class="hero">
+    <section class="hero">
       <div>
         <h1 class="hero-main-title">Welcome</h1>
         <h2 class="hero-subtitle">Wirtschaftsinformatiker &amp; IT Specialist Freelancer</h2>
@@ -349,14 +347,14 @@
         <p class="hero-text">
           Zielstrebiger Student der Wirtschaftsinformatik und freiberuflicher IT Specialist mit Erfahrung in
           IT-Audit, IT-Administration und Projektarbeit. Fokus auf IT-Kontrollen, Risikobewertung, Compliance und
-          sauber dokumentierte technische Lösungen – sowohl im Unternehmensumfeld als auch in akademischen Projekten.
+          sauber dokumentierte technische Lösungen – bei Unternehmen wie Deloitte, Deutsche Bank, STADA, BWI oder Geodis.
         </p>
       </div>
       <aside class="hero-aside">
         <div class="hero-aside-title">Schwerpunkte</div>
         <ul>
           <li>IT Audit &amp; IT Risk Management im Finanzsektor (FSI).</li>
-          <li>Bewertung von IT-Kontrollen, DORA-bezogene Assessments.</li>
+          <li>Bewertung von IT-Kontrollen und DORA-bezogene Assessments.</li>
           <li>Software Engineering &amp; Systemarchitektur mit UML-Modellierung.</li>
           <li>Projektmanagement, ERP-Dashboard-Konzepte und Dokumentation.</li>
         </ul>
@@ -364,26 +362,26 @@
     </section>
 
     <!-- RASTER MIT KACHELN -->
-    <section id="cv" class="tiles">
-      <article class="tile">
+    <section class="tiles">
+      <article class="tile" onclick="location.href='cv.html'">
         <h3 class="tile-title">CV / IT-Profil</h3>
         <p class="tile-text">
           Beruflicher Werdegang, Studium und technische Schwerpunkte im Bereich IT, Audit und Projekte.
         </p>
       </article>
-      <article class="tile" id="projekte">
+      <article class="tile" onclick="location.href='projekte.html'">
         <h3 class="tile-title">Projekte</h3>
         <p class="tile-text">
           Auswahl universitärer und praktischer Projekte mit Fokus auf Architektur, Modellierung und Projektsteuerung.
         </p>
       </article>
-      <article class="tile" id="kontakt">
+      <article class="tile" onclick="location.href='kontakt.html'">
         <h3 class="tile-title">Kontakt &amp; Zusammenarbeit</h3>
         <p class="tile-text">
           Möglichkeiten für Werkstudententätigkeiten, freiberufliche Mandate oder fachlichen Austausch.
         </p>
       </article>
-      <article class="tile" id="rechtliches">
+      <article class="tile" onclick="location.href='rechtliches.html'">
         <h3 class="tile-title">Rechtliches &amp; Datenschutz</h3>
         <p class="tile-text">
           Impressum, Datenschutzhinweise und rechtliche Rahmenbedingungen dieser Website.
@@ -391,18 +389,19 @@
       </article>
     </section>
 
-    <!-- KONTAKT UND FORMULAR -->
+    <!-- OPTIONAL: KONTAKT direkt auf Startseite -->
     <section class="contact-section">
-      <article class="contact-card">
+      <article class="block">
         <h3>Direkter Kontakt</h3>
         <p><strong>E-Mail:</strong> boukayouabilal@icloud.com</p>
         <p><strong>Telefon:</strong> +49 155 66030541</p>
         <p class="muted">
-          Anfragen am besten per E-Mail oder über das Formular. Kurzbeschreibung des Anliegens hilft bei der schnellen Einordnung.
+          Für Projektanfragen, Werkstudententätigkeiten oder freiberufliche Mandate bitte kurz das Anliegen,
+          den zeitlichen Rahmen und ggf. den Standort skizzieren.
         </p>
       </article>
 
-      <article class="form-card">
+      <article class="block">
         <h3>Kontaktformular</h3>
         <form action="https://formspree.io/f/mjkqwvbo" method="POST">
           <div class="form-group">
@@ -432,21 +431,10 @@
             Anfrage senden
           </button>
           <p class="hint">
-            Das Formular wird über Formspree versendet. Bei der ersten Anfrage ggf. Spam/Unbekannt prüfen und die
-            Formspree-Bestätigung einmalig freigeben [web:3][web:6].
+            Das Formular wird über Formspree versendet. Stelle sicher, dass deine E-Mail bei Formspree bestätigt ist
+            und prüfe bei der ersten Anfrage auch den Spam-Ordner [web:24][web:6].
           </p>
         </form>
-      </article>
-    </section>
-
-    <!-- RECHTLICHES KURZBLOCK -->
-    <section style="margin-top:20px;">
-      <article class="contact-card">
-        <h3>Rechtliches (Kurzfassung)</h3>
-        <p class="muted">
-          Es werden keine Tracking-Cookies oder Analyse-Tools eingesetzt. Bei Nutzung des Formulars werden die
-          eingegebenen Daten ausschließlich zur Bearbeitung der Anfrage verwendet und nicht an Dritte weitergegeben.
-        </p>
       </article>
     </section>
 
