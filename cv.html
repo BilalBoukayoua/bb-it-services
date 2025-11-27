@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CV – Bilal Boukayoua</title>
+  <style>
+    :root {
+      --bg-page: #f5f3ef;
+      --bg-card: #ffffff;
+      --bg-section: #fdfbf8;
+      --border-soft: #e4e1da;
+      --border-strong: #d4cfc2;
+      --text-main: #1f2933;
+      --text-muted: #6b7280;
+      --accent: #1f4f82;
+      --accent-soft: #e0ecf7;
+      --accent-strong: #153a5b;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px 40px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(245,243,239,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-name {
+      font-size: 18px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--accent-strong);
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: border-color 0.18s, color 0.18s;
+    }
+
+    .nav-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent-strong);
+    }
+
+    .section-header {
+      margin: 30px 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-strong);
+    }
+
+    .btn-back {
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: transparent;
+      padding: 5px 11px;
+      font-size: 12px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+    }
+
+    .btn-back:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent-strong);
+    }
+
+    .block {
+      background: var(--bg-card);
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      padding: 18px 16px;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .block h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .block p { margin-bottom: 6px; }
+
+    .block ul { margin-left: 18px; }
+
+    .block li { margin-bottom: 5px; }
+
+    .muted { color: var(--text-muted); }
+
+    footer {
+      margin-top: 30px;
+      padding: 14px 20px 20px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+      border-top: 1px solid var(--border-soft);
+      background: #f0ece4;
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 8px;
+      }
+      .nav-links {
+        width: 100%;
+        flex-wrap: wrap;
+        row-gap: 4px;
+      }
+      .page {
+        padding: 0 14px 32px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .brand-name { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="brand">
+        <div class="brand-name">Bilal Boukayoua</div>
+        <div class="brand-sub">Wirtschaftsinformatiker · IT Specialist Freelancer</div>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="cv.html">CV / Profil</a>
+        <a href="projekte.html">Projekte</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="rechtliches.html">Rechtliches</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="section-header">
+      <h1 class="section-title">CV / IT-Profil</h1>
+      <button class="btn-back" onclick="location.href='index.html'">← Zur Startseite</button>
+    </div>
+
+    <article class="block">
+      <h3>Kurzprofil</h3>
+      <p>
+        Zielstrebiger Student der Wirtschaftsinformatik und freiberuflicher IT Specialist mit geplantem Bachelorabschluss
+        und anschließender Spezialisierung im IT-Management. Kombination aus theoretischem Know-how und praktischer
+        Erfahrung in IT-Audit, IT-Administration, Projektarbeit und Compliance-Themen bei namhaften Unternehmen wie
+        Deloitte, Deutsche Bank, STADA, BWI und Geodis. Analytisches Denken, strukturierte Arbeitsweise und
+        Verantwortungsbewusstsein prägen das Profil.
+      </p>
+    </article>
+
+    <article class="block">
+      <h3>Berufliche Stationen</h3>
+
+      <p><strong>Werkstudent – IT Audit &amp; IT Risk Management (FSI) | Deloitte</strong><br />
+        seit 12/2025 · Frankfurt am Main
+      </p>
+      <ul>
+        <li>Mitarbeit im IT-Audit-Team (A&amp;A – IT, Controls &amp; Specialized Assurance, FSI) mit Fokus auf Prüfungen von IT-Kontrollen in Finanzinstituten.</li>
+        <li>Unterstützung bei IT-Prüfungen zu Zugangskontrollen, Change Management und IT-Operations.</li>
+        <li>Review grundlegender Netzwerk-Sicherheitskontrollen sowie Bewertung von Verschlüsselungs- und kryptografischen Maßnahmen.</li>
+        <li>Prüfung von Privileged Access Management (PAM) inkl. Analyse hochprivilegierter Accounts und Berechtigungsprozesse.</li>
+        <li>Unterstützung bei DORA-Assessments (Digital Operational Resilience Regulation) im Kontext von IT-Risiko- und Resilienzprüfungen.</li>
+        <li>Mitarbeit im Projektmanagement: Dokumentation, Workpapers, Kontrolltests und Abstimmung mit Kundenteams.</li>
+        <li>Risikobewertung im IT-Umfeld und Einordnung relevanter IT-Risiken.</li>
+      </ul>
+
+      <p><strong>IT-Specialist (Freiberuflich) | Deutsche Bank</strong><br />
+        10/2025 – 11/2025 · Frankfurt am Main
+      </p>
+      <ul>
+        <li>Unterstützung beim Rechenzentrumsumzug gemäß interner IT-Governance- und Sicherheitsrichtlinien.</li>
+        <li>Koordination technischer Abläufe und Dokumentation der Systemmigration.</li>
+        <li>Mitwirkung bei Risikoanalyse, Compliance-Prüfung und Audit-Vorbereitung.</li>
+      </ul>
+
+      <p><strong>IT-Specialist (Freiberuflich) | STADA Group</strong><br />
+        05/2025 – 08/2025 · Bad Vilbel
+      </p>
+      <ul>
+        <li>IT-Administration und Support im Rahmen eines Infrastrukturprojekts.</li>
+        <li>Sichere Datenlöschung und Verschlüsselung von Firmenhardware inkl. BIOS-Setup.</li>
+        <li>Vorbereitung und Übergabe von Systemen nach internen Compliance-Standards.</li>
+      </ul>
+
+      <p><strong>IT-Unterstützung | BWI, Geodis u. a.</strong></p>
+      <ul>
+        <li>Mitarbeit in IT-Projekten (z. B. Infrastruktur, Migration, Logistik-IT) mit Fokus auf Umsetzung, Dokumentation und Qualitätssicherung.</li>
+        <li>Technische Unterstützung bei Rollouts, Konfigurationen und Systemumstellungen.</li>
+      </ul>
+    </article>
+
+    <article class="block">
+      <h3>Ausbildung</h3>
+      <p><strong>Frankfurt University of Applied Sciences</strong> – Wirtschaftsinformatik (B.Sc.) · seit 10/2023</p>
+      <p><strong>Interkulturelle Schule Rhein-Main</strong> – Fachhochschulreife (Wirtschaft &amp; Verwaltung) · 09/2021 – 07/2023</p>
+    </article>
+
+    <article class="block">
+      <h3>Fachliche Schwerpunkte &amp; Skills</h3>
+      <p><strong>Technische Kompetenzen:</strong> Java, Python, SQL, Grundlagen Webentwicklung.</p>
+      <p><strong>Tools &amp; Plattformen:</strong> Microsoft Intune, Jira, Confluence, MS Project, Apple Business Manager, Automate.</p>
+      <p><strong>Schwerpunkte:</strong> IT-Administration, IT-Audit &amp; Compliance, Systemmigration, Projektplanung, Dokumentation.</p>
+    </article>
+
+    <article class="block">
+      <h3>Sprachkenntnisse</h3>
+      <p>Deutsch – Muttersprache</p>
+      <p>Englisch – fließend</p>
+      <p>Arabisch – Muttersprache</p>
+    </article>
+
+    <footer>
+      © 2025 Bilal Boukayoua. Alle Rechte vorbehalten.
+    </footer>
+  </main>
+</body>
+</html>
