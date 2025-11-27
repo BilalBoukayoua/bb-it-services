@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rechtliches – Bilal Boukayoua</title>
+  <style>
+    :root {
+      --bg-page: #f5f3ef;
+      --bg-card: #ffffff;
+      --bg-section: #fdfbf8;
+      --border-soft: #e4e1da;
+      --border-strong: #d4cfc2;
+      --text-main: #1f2933;
+      --text-muted: #6b7280;
+      --accent: #1f4f82;
+      --accent-soft: #e0ecf7;
+      --accent-strong: #153a5b;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px 40px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(245,243,239,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-name {
+      font-size: 18px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--accent-strong);
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: border-color 0.18s, color 0.18s;
+    }
+
+    .nav-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent-strong);
+    }
+
+    .section-header {
+      margin: 30px 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-strong);
+    }
+
+    .btn-back {
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: transparent;
+      padding: 5px 11px;
+      font-size: 12px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+    }
+
+    .btn-back:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent-strong);
+    }
+
+    .block {
+      background: var(--bg-card);
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      padding: 18px 16px;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .block h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .block p { margin-bottom: 6px; }
+
+    .muted { color: var(--text-muted); }
+
+    footer {
+      margin-top: 30px;
+      padding: 14px 20px 20px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+      border-top: 1px solid var(--border-soft);
+      background: #f0ece4;
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 8px;
+      }
+      .nav-links {
+        width: 100%;
+        flex-wrap: wrap;
+        row-gap: 4px;
+      }
+      .page {
+        padding: 0 14px 32px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .brand-name { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="brand">
+        <div class="brand-name">Bilal Boukayoua</div>
+        <div class="brand-sub">Wirtschaftsinformatiker · IT Specialist Freelancer</div>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="cv.html">CV / Profil</a>
+        <a href="projekte.html">Projekte</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="rechtliches.html">Rechtliches</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="section-header">
+      <h1 class="section-title">Rechtliches</h1>
+      <button class="btn-back" onclick="location.href='index.html'">← Zur Startseite</button>
+    </div>
+
+    <article class="block">
+      <h3>Impressum</h3>
+      <p><strong>Verantwortlich für den Inhalt dieser Website gemäß § 5 TMG:</strong></p>
+      <p>
+        Bilal Boukayoua<br />
+        (Privatperson / freiberufliche IT-Tätigkeiten)<br />
+        E-Mail: boukayouabilal@icloud.com<br />
+        Telefon: +49 155 66030541
+      </p>
+      <p class="muted">
+        Diese Seite dient der Präsentation des beruflichen Profils und ausgewählter Projekte. Es handelt sich nicht um ein
+        Angebot einer rechtsfähigen Gesellschaft.
+      </p>
+    </article>
+
+    <article class="block">
+      <h3>Datenschutzhinweise (Kurzfassung)</h3>
+      <p>
+        Der Schutz personenbezogener Daten wird ernst genommen. Es werden nur solche Daten verarbeitet, die zur
+        Bereitstellung der Website und zur Bearbeitung von Kontaktanfragen erforderlich sind.
+      </p>
+      <p>
+        Beim Aufruf der Website können durch den Hostinganbieter technisch erforderliche Zugriffsdaten (z. B. IP-Adresse,
+        Zeitpunkt des Abrufs, aufgerufene Seite) protokolliert werden. Diese Daten dienen ausschließlich der
+        Sicherstellung des Betriebs und werden in der Regel automatisch gelöscht.
+      </p>
+      <p>
+        Bei Nutzung des Kontaktformulars werden die von dir eingegebenen Daten (Name, E-Mail-Adresse, optional Telefon
+        und Nachricht) über den Dienst Formspree an die angegebene Kontaktadresse weitergeleitet und ausschließlich zur
+        Bearbeitung der Anfrage verwendet. Eine Weitergabe an Dritte findet nicht statt [web:24][web:6].
+      </p>
+      <p>
+        Du hast das Recht auf Auskunft, Berichtigung oder Löschung deiner personenbezogenen Daten, soweit keine
+        gesetzlichen Aufbewahrungspflichten entgegenstehen. Hierzu genügt eine formlose Anfrage an die oben genannte
+        E-Mail-Adresse.
+      </p>
+    </article>
+
+    <article class="block">
+      <h3>Haftungsausschluss</h3>
+      <p>
+        Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und
+        Aktualität der Inhalte wird jedoch keine Gewähr übernommen. Insbesondere stellen Beschreibungen von Projekten
+        und Tätigkeiten keine verbindliche Zusage gegenüber Dritten dar.
+      </p>
+      <p>
+        Trotz sorgfältiger inhaltlicher Kontrolle wird keine Haftung für externe Links übernommen. Für den Inhalt der
+        verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+      </p>
+    </article>
+
+    <footer>
+      © 2025 Bilal Boukayoua. Alle Rechte vorbehalten.
+    </footer>
+  </main>
+</body>
+</html>
