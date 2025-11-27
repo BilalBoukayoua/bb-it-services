@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bilal Boukayoua – Wirtschaftsinformatiker & IT Specialist</title>
+  <title>Bilal Boukayoua – Wirtschaftsinformatiker & IT Specialist Freelancer</title>
   <style>
     :root {
       --bg-page: #f5f3ef;
@@ -30,7 +30,6 @@
 
     a { color: inherit; text-decoration: none; }
 
-    /* Layout */
     .page {
       max-width: 1120px;
       margin: 0 auto;
@@ -194,72 +193,32 @@
       color: var(--text-muted);
     }
 
-    /* Sections */
-    .section {
-      display: none;
-      padding: 30px 0 10px;
+    /* Kontaktbereich */
+    .contact-section {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 26px;
     }
 
-    .section.active { display: block; }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .section-title {
-      font-size: 18px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent-strong);
-    }
-
-    .btn-back {
-      border-radius: 999px;
-      border: 1px solid var(--border-soft);
-      background: transparent;
-      padding: 5px 11px;
-      font-size: 12px;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: background 0.18s, border-color 0.18s, color 0.18s;
-    }
-
-    .btn-back:hover {
-      background: var(--accent-soft);
-      border-color: var(--accent);
-      color: var(--accent-strong);
-    }
-
-    .block {
+    .contact-card,
+    .form-card {
       background: var(--bg-card);
       border-radius: 14px;
       border: 1px solid var(--border-soft);
       padding: 18px 16px;
       font-size: 14px;
-      margin-bottom: 16px;
     }
 
-    .block h3 {
+    .contact-card h3,
+    .form-card h3 {
       font-size: 15px;
       margin-bottom: 6px;
       font-weight: 600;
     }
 
-    .block p { margin-bottom: 6px; }
-
-    .block ul {
-      margin-left: 18px;
-    }
-
-    .block li { margin-bottom: 5px; }
-
     .muted { color: var(--text-muted); }
 
-    /* Form */
     .form-group { margin-bottom: 12px; }
 
     .form-group label {
@@ -337,7 +296,6 @@
       }
       .nav-links {
         width: 100%;
-        justify-content: flex-start;
         flex-wrap: wrap;
         row-gap: 4px;
       }
@@ -345,6 +303,9 @@
         grid-template-columns: 1fr;
       }
       .tiles {
+        grid-template-columns: 1fr;
+      }
+      .contact-section {
         grid-template-columns: 1fr;
       }
       .page {
@@ -364,195 +325,84 @@
     <nav class="nav">
       <div class="brand">
         <div class="brand-name">Bilal Boukayoua</div>
-        <div class="brand-sub">Wirtschaftsinformatik · IT Audit · Risk &amp; Projects</div>
+        <div class="brand-sub">Wirtschaftsinformatiker · IT Specialist Freelancer</div>
       </div>
       <div class="nav-links">
-        <a onclick="showSection('home')">Home</a>
-        <a onclick="showSection('cv')">CV / Profil</a>
-        <a onclick="showSection('projekte')">Projekte</a>
-        <a onclick="showSection('kontakt')">Kontakt</a>
-        <a onclick="showSection('recht')">Rechtliches</a>
+        <a href="#home">Home</a>
+        <a href="#cv">CV / Profil</a>
+        <a href="#projekte">Projekte</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#rechtliches">Rechtliches</a>
       </div>
     </nav>
   </header>
 
   <main class="page">
-    <!-- HOME -->
-    <section id="home" class="section active">
-      <div class="hero">
-        <div>
-          <h1 class="hero-main-title">Welcome</h1>
-          <h2 class="hero-subtitle">Wirtschaftsinformatiker &amp; IT Specialist</h2>
-          <div class="hero-pill">
-            IT Audit · IT Risk · Projektarbeit
-          </div>
-          <p class="hero-text">
-            Zielstrebiger Student der Wirtschaftsinformatik mit praktischer Erfahrung in IT-Audit, IT-Administration
-            und Projektmanagement im Finanzsektor. Fokus auf IT-Kontrollen, Risikobewertung, Compliance und
-            klar dokumentierte technische Lösungen.
-          </p>
+    <!-- HERO & KURZPROFIL -->
+    <section id="home" class="hero">
+      <div>
+        <h1 class="hero-main-title">Welcome</h1>
+        <h2 class="hero-subtitle">Wirtschaftsinformatiker &amp; IT Specialist Freelancer</h2>
+        <div class="hero-pill">
+          IT Audit · IT Risk · Projektarbeit
         </div>
-        <aside class="hero-aside">
-          <div class="hero-aside-title">Schwerpunkte</div>
-          <ul>
-            <li>IT Audit &amp; Kontrollenprüfung in Finanzinstituten (FSI).</li>
-            <li>Bewertung von IT-Risiken, DORA-bezogene Assessments.</li>
-            <li>Projektarbeit in Software Engineering &amp; Systemarchitektur.</li>
-            <li>UML-Modellierung, Dokumentation, Projektplanung.</li>
-          </ul>
-        </aside>
+        <p class="hero-text">
+          Zielstrebiger Student der Wirtschaftsinformatik und freiberuflicher IT Specialist mit Erfahrung in
+          IT-Audit, IT-Administration und Projektarbeit. Fokus auf IT-Kontrollen, Risikobewertung, Compliance und
+          sauber dokumentierte technische Lösungen – sowohl im Unternehmensumfeld als auch in akademischen Projekten.
+        </p>
       </div>
-
-      <section class="tiles">
-        <article class="tile" onclick="showSection('cv')">
-          <h3 class="tile-title">CV / IT-Profil</h3>
-          <p class="tile-text">
-            Beruflicher Werdegang, Studium und technische Schwerpunkte im Bereich IT, Audit und Projekte.
-          </p>
-        </article>
-        <article class="tile" onclick="showSection('projekte')">
-          <h3 class="tile-title">Projekte</h3>
-          <p class="tile-text">
-            Auswahl universitärer Projekte mit Fokus auf Softwarearchitektur, Modellierung und Projektmanagement.
-          </p>
-        </article>
-        <article class="tile" onclick="showSection('kontakt')">
-          <h3 class="tile-title">Kontakt &amp; Zusammenarbeit</h3>
-          <p class="tile-text">
-            Möglichkeiten für Werkstudententätigkeiten, Praktika, freiberufliche Tätigkeiten oder fachlichen Austausch.
-          </p>
-        </article>
-        <article class="tile" onclick="showSection('recht')">
-          <h3 class="tile-title">Rechtliches &amp; Datenschutz</h3>
-          <p class="tile-text">
-            Impressum, Datenschutzhinweise und rechtliche Rahmenbedingungen dieser Seite.
-          </p>
-        </article>
-      </section>
+      <aside class="hero-aside">
+        <div class="hero-aside-title">Schwerpunkte</div>
+        <ul>
+          <li>IT Audit &amp; IT Risk Management im Finanzsektor (FSI).</li>
+          <li>Bewertung von IT-Kontrollen, DORA-bezogene Assessments.</li>
+          <li>Software Engineering &amp; Systemarchitektur mit UML-Modellierung.</li>
+          <li>Projektmanagement, ERP-Dashboard-Konzepte und Dokumentation.</li>
+        </ul>
+      </aside>
     </section>
 
-    <!-- CV -->
-    <section id="cv" class="section">
-      <div class="section-header">
-        <h2 class="section-title">CV / IT-Profil</h2>
-        <button class="btn-back" onclick="showSection('home')">← Zurück</button>
-      </div>
-
-      <article class="block">
-        <h3>Kurzprofil</h3>
-        <p>
-          Zielstrebiger Student der Wirtschaftsinformatik mit geplantem Bachelorabschluss und anschließender
-          Spezialisierung auf IT-Management. Kombination aus theoretischem Know-how und praktischer Erfahrung
-          in IT-Audit, IT-Administration, Projektarbeit und Compliance-Themen. Analytisches Denken, strukturierte
-          Arbeitsweise und Verantwortungsbewusstsein prägen das Profil.
+    <!-- RASTER MIT KACHELN -->
+    <section id="cv" class="tiles">
+      <article class="tile">
+        <h3 class="tile-title">CV / IT-Profil</h3>
+        <p class="tile-text">
+          Beruflicher Werdegang, Studium und technische Schwerpunkte im Bereich IT, Audit und Projekte.
         </p>
       </article>
-
-      <article class="block">
-        <h3>Berufliche Stationen</h3>
-
-        <p><strong>Werkstudent – IT Audit &amp; IT Risk Management (FSI) | Deloitte</strong><br />
-          seit 12/2025 · Frankfurt am Main
+      <article class="tile" id="projekte">
+        <h3 class="tile-title">Projekte</h3>
+        <p class="tile-text">
+          Auswahl universitärer und praktischer Projekte mit Fokus auf Architektur, Modellierung und Projektsteuerung.
         </p>
-        <ul>
-          <li>Mitarbeit im IT-Audit-Team (A&amp;A – IT, Controls &amp; Specialized Assurance, FSI) mit Fokus auf Prüfungen von IT-Kontrollen in Finanzinstituten.</li>
-          <li>Unterstützung bei IT-Prüfungen zu Zugangskontrollen, Change Management und IT-Operations.</li>
-          <li>Review grundlegender Netzwerk-Sicherheitskontrollen sowie Bewertung von Verschlüsselungs- und kryptografischen Maßnahmen.</li>
-          <li>Prüfung von Privileged Access Management (PAM) inkl. Analyse hochprivilegierter Accounts und Berechtigungsprozesse.</li>
-          <li>Unterstützung bei DORA-Assessments (Digital Operational Resilience Regulation).</li>
-          <li>Mitarbeit im Projektmanagement: Dokumentation, Workpapers, Kontrolltests und Abstimmung mit Kundenteams.</li>
-          <li>Risikobewertung im IT-Umfeld und Einordnung relevanter IT-Risiken.</li>
-        </ul>
-
-        <p><strong>IT-Specialist (Freiberuflich) | Deutsche Bank</strong><br />
-          10/2025 – 11/2025 · Frankfurt am Main
-        </p>
-        <ul>
-          <li>Unterstützung beim Rechenzentrumsumzug gemäß interner IT-Governance- und Sicherheitsrichtlinien.</li>
-          <li>Koordination technischer Abläufe und Dokumentation der Systemmigration.</li>
-          <li>Mitwirkung bei Risikoanalyse, Compliance-Prüfung und Audit-Vorbereitung.</li>
-        </ul>
-
-        <p><strong>IT-Specialist (Freiberuflich) | STADA Group</strong><br />
-          05/2025 – 08/2025 · Bad Vilbel
-        </p>
-        <ul>
-          <li>IT-Administration und Support im Rahmen eines Infrastrukturprojekts.</li>
-          <li>Sichere Datenlöschung und Verschlüsselung von Firmenhardware inkl. BIOS-Setup.</li>
-          <li>Vorbereitung und Übergabe von Systemen nach internen Compliance-Standards.</li>
-        </ul>
       </article>
-
-      <article class="block">
-        <h3>Ausbildung</h3>
-        <p><strong>Frankfurt University of Applied Sciences</strong> – Wirtschaftsinformatik (B.Sc.), seit 10/2023</p>
-        <p><strong>Interkulturelle Schule Rhein-Main</strong> – Fachhochschulreife (Wirtschaft &amp; Verwaltung), 09/2021 – 07/2023</p>
+      <article class="tile" id="kontakt">
+        <h3 class="tile-title">Kontakt &amp; Zusammenarbeit</h3>
+        <p class="tile-text">
+          Möglichkeiten für Werkstudententätigkeiten, freiberufliche Mandate oder fachlichen Austausch.
+        </p>
       </article>
-
-      <article class="block">
-        <h3>Fachliche Schwerpunkte &amp; Skills</h3>
-        <p><strong>Technische Kompetenzen:</strong> Java, Python, SQL, Grundlagen Webentwicklung.</p>
-        <p><strong>Tools &amp; Plattformen:</strong> Microsoft Intune, Jira, Confluence, MS Project, Apple Business Manager, Automate.</p>
-        <p><strong>Schwerpunkte:</strong> IT-Administration, IT-Audit &amp; Compliance, Systemmigration, Projektplanung, Dokumentation.</p>
-        <p><strong>Sprachen:</strong> Deutsch (Muttersprache), Englisch (fließend), Arabisch (Muttersprache).</p>
+      <article class="tile" id="rechtliches">
+        <h3 class="tile-title">Rechtliches &amp; Datenschutz</h3>
+        <p class="tile-text">
+          Impressum, Datenschutzhinweise und rechtliche Rahmenbedingungen dieser Website.
+        </p>
       </article>
     </section>
 
-    <!-- PROJEKTE -->
-    <section id="projekte" class="section">
-      <div class="section-header">
-        <h2 class="section-title">Projekte</h2>
-        <button class="btn-back" onclick="showSection('home')">← Zurück</button>
-      </div>
-
-      <article class="block">
-        <h3>Software-Engineering – Bezahlvorgang im verteilten Warenkorbsystem</h3>
-        <p><strong>Modul: Software Engineering · Note: 1,0</strong></p>
-        <ul>
-          <li><strong>Zielsetzung:</strong> Konzeption und Modellierung des Bezahlungsvorgangs innerhalb eines verteilten Warenkorbsystems zur Vertiefung des Verständnisses von Softwarearchitektur und Systemdesign.</li>
-          <li><strong>Anforderungsanalyse:</strong> Systematische Erfassung und Beschreibung der Kernfunktionen des Bezahlprozesses, einschließlich Transaktionsabwicklung, Validierung und Kommunikation mit externen Zahlungsdiensten.</li>
-          <li><strong>UML-Modellierung:</strong> Erstellung einer umfassenden technischen Dokumentation mithilfe von Use-Case-, Klassen-, Aktivitäts-, Sequenz- und Zustandsdiagrammen.</li>
-          <li><strong>Systemarchitektur:</strong> Entwurf einer modularen, serviceorientierten Architektur mit klar abgegrenzten Komponenten für Zahlungsabwicklung, Warenkorbverwaltung und Bestellprozess.</li>
-          <li><strong>Ergebnis:</strong> Entwicklung eines vollständig dokumentierten Softwarekonzepts mit klar definierten Schnittstellen als Grundlage für eine spätere Implementierung.</li>
-          <li><strong>Lernergebnisse:</strong> Vertiefte Kenntnisse im Requirements Engineering, in objektorientierter Modellierung und in der strukturierten Anwendung von UML im Rahmen komplexer Softwarearchitekturen.</li>
-        </ul>
-      </article>
-
-      <article class="block">
-        <h3>Projektmanagement – ERP-Dashboard & Projektsteuerung</h3>
-        <p><strong>Modul: Projektmanagement · Note: 1,0</strong></p>
-        <ul>
-          <li>Konzeption eines ERP-Dashboards auf Basis einer Cloud-Infrastruktur (u. a. Planung mit AWS-Komponenten) zur transparenten Darstellung von Projektkennzahlen und Fortschritt.</li>
-          <li>Erstellung eines detaillierten Projektstrukturplans (WBS) inklusive Aufwandsschätzung, COCOMO-orientierter Kalkulation, Terminplanung und Ermittlung des kritischen Pfads in MS Project.</li>
-          <li>Aufbau eines Risikoregisters und Durchführung einer Stakeholder-Analyse mit Bewertung von Einfluss und Interessen.</li>
-          <li>Kombination klassischer Projektmanagement-Methoden mit agilen Elementen (Scrum-orientierte Sprints, Reviews, kontinuierliches Feedback).</li>
-        </ul>
-      </article>
-
-      <article class="block">
-        <h3>Weitere Arbeiten</h3>
-        <ul>
-          <li>Interaktives Buzzword-Bingo-Mehrspielerspiel in Python (Textual) mit Shared-Memory-Kommunikation.</li>
-          <li>Kleinere Automatisierungs- und Infrastrukturprojekte im privaten Umfeld (Scripting, Tooling, Systemkonfiguration).</li>
-        </ul>
-      </article>
-    </section>
-
-    <!-- KONTAKT -->
-    <section id="kontakt" class="section">
-      <div class="section-header">
-        <h2 class="section-title">Kontakt</h2>
-        <button class="btn-back" onclick="showSection('home')">← Zurück</button>
-      </div>
-
-      <article class="block">
+    <!-- KONTAKT UND FORMULAR -->
+    <section class="contact-section">
+      <article class="contact-card">
         <h3>Direkter Kontakt</h3>
         <p><strong>E-Mail:</strong> boukayouabilal@icloud.com</p>
         <p><strong>Telefon:</strong> +49 155 66030541</p>
-        <p class="muted">Anfragen am besten per E-Mail mit kurzer Beschreibung des Anliegens.</p>
+        <p class="muted">
+          Anfragen am besten per E-Mail oder über das Formular. Kurzbeschreibung des Anliegens hilft bei der schnellen Einordnung.
+        </p>
       </article>
 
-      <article class="block">
+      <article class="form-card">
         <h3>Kontaktformular</h3>
         <form action="https://formspree.io/f/mjkqwvbo" method="POST">
           <div class="form-group">
@@ -564,3 +414,45 @@
             <input id="nachname" name="Nachname" type="text" required />
           </div>
           <div class="form-group">
+            <label for="email">E-Mail *</label>
+            <input id="email" name="Email" type="email" required />
+          </div>
+          <div class="form-group">
+            <label for="telefon">Telefonnummer</label>
+            <input id="telefon" name="Telefon" type="tel" />
+          </div>
+          <div class="form-group">
+            <label for="nachricht">Nachricht / Projektbeschreibung *</label>
+            <textarea id="nachricht" name="Nachricht" required></textarea>
+          </div>
+
+          <input type="hidden" name="_subject" value="Neue Anfrage über bb-it-services.com" />
+
+          <button type="submit" class="btn-primary">
+            Anfrage senden
+          </button>
+          <p class="hint">
+            Das Formular wird über Formspree versendet. Bei der ersten Anfrage ggf. Spam/Unbekannt prüfen und die
+            Formspree-Bestätigung einmalig freigeben [web:3][web:6].
+          </p>
+        </form>
+      </article>
+    </section>
+
+    <!-- RECHTLICHES KURZBLOCK -->
+    <section style="margin-top:20px;">
+      <article class="contact-card">
+        <h3>Rechtliches (Kurzfassung)</h3>
+        <p class="muted">
+          Es werden keine Tracking-Cookies oder Analyse-Tools eingesetzt. Bei Nutzung des Formulars werden die
+          eingegebenen Daten ausschließlich zur Bearbeitung der Anfrage verwendet und nicht an Dritte weitergegeben.
+        </p>
+      </article>
+    </section>
+
+    <footer>
+      © 2025 Bilal Boukayoua. Alle Rechte vorbehalten.
+    </footer>
+  </main>
+</body>
+</html>
