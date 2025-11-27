@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bilal Boukayoua – Wirtschaftsinformatiker & IT Specialist</title>
+  <style>
+    :root {
+      --bg-page: #f5f3ef;
+      --bg-card: #ffffff;
+      --bg-section: #fdfbf8;
+      --border-soft: #e4e1da;
+      --border-strong: #d4cfc2;
+      --text-main: #1f2933;
+      --text-muted: #6b7280;
+      --accent: #1f4f82;
+      --accent-soft: #e0ecf7;
+      --accent-strong: #153a5b;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* Layout */
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px 40px;
+    }
+
+    /* Header / Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(245,243,239,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-name {
+      font-size: 18px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--accent-strong);
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: border-color 0.18s, color 0.18s;
+    }
+
+    .nav-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent-strong);
+    }
+
+    /* Hero / Intro */
+    .hero {
+      padding: 42px 0 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 32px;
+    }
+
+    .hero-main-title {
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--accent-strong);
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-section);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .hero-text {
+      font-size: 14px;
+      max-width: 540px;
+    }
+
+    .hero-aside {
+      background: var(--bg-section);
+      border-radius: 16px;
+      border: 1px solid var(--border-soft);
+      padding: 18px 16px;
+      font-size: 13px;
+    }
+
+    .hero-aside-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-strong);
+      margin-bottom: 10px;
+    }
+
+    .hero-aside ul {
+      margin-left: 18px;
+      color: var(--text-main);
+    }
+
+    .hero-aside li { margin-bottom: 6px; }
+
+    /* Summary tiles */
+    .tiles {
+      margin: 8px 0 30px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .tile {
+      background: var(--bg-card);
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      padding: 18px 16px;
+      cursor: pointer;
+      transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s, background 0.18s;
+    }
+
+    .tile:hover {
+      border-color: var(--accent);
+      box-shadow: 0 12px 26px rgba(15,23,42,0.15);
+      background: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .tile-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .tile-text {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Sections */
+    .section {
+      display: none;
+      padding: 30px 0 10px;
+    }
+
+    .section.active { display: block; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent-strong);
+    }
+
+    .btn-back {
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: transparent;
+      padding: 5px 11px;
+      font-size: 12px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+    }
+
+    .btn-back:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent-strong);
+    }
+
+    .block {
+      background: var(--bg-card);
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      padding: 18px 16px;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .block h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .block p { margin-bottom: 6px; }
+
+    .block ul {
+      margin-left: 18px;
+    }
+
+    .block li { margin-bottom: 5px; }
+
+    .muted { color: var(--text-muted); }
+
+    /* Form */
+    .form-group { margin-bottom: 12px; }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--border-soft);
+      background: #faf7f2;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+      background: #ffffff;
+    }
+
+    .form-group textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 8px 16px;
+      border: 1px solid var(--accent-strong);
+      background: linear-gradient(to right, var(--accent), #163b63);
+      color: #ffffff;
+      font-size: 13px;
+      cursor: pointer;
+      transition: box-shadow 0.18s, transform 0.18s;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 10px 24px rgba(21,58,91,0.45);
+      transform: translateY(-1px);
+    }
+
+    .hint {
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    footer {
+      margin-top: 36px;
+      padding: 14px 20px 20px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+      border-top: 1px solid var(--border-soft);
+      background: #f0ece4;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        row-gap: 8px;
+      }
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        row-gap: 4px;
+      }
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .tiles {
+        grid-template-columns: 1fr;
+      }
+      .page {
+        padding: 0 14px 32px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .brand-name { font-size: 16px; }
+      .hero-main-title { font-size: 22px; letter-spacing: 0.12em; }
+      .hero-subtitle { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="brand">
+        <div class="brand-name">Bilal Boukayoua</div>
+        <div class="brand-sub">Wirtschaftsinformatik · IT Audit · Risk &amp; Projects</div>
+      </div>
+      <div class="nav-links">
+        <a onclick="showSection('home')">Home</a>
+        <a onclick="showSection('cv')">CV / Profil</a>
+        <a onclick="showSection('projekte')">Projekte</a>
+        <a onclick="showSection('kontakt')">Kontakt</a>
+        <a onclick="showSection('recht')">Rechtliches</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page">
+    <!-- HOME -->
+    <section id="home" class="section active">
+      <div class="hero">
+        <div>
+          <h1 class="hero-main-title">Welcome</h1>
+          <h2 class="hero-subtitle">Wirtschaftsinformatiker &amp; IT Specialist</h2>
+          <div class="hero-pill">
+            IT Audit · IT Risk · Projektarbeit
+          </div>
+          <p class="hero-text">
+            Zielstrebiger Student der Wirtschaftsinformatik mit praktischer Erfahrung in IT-Audit, IT-Administration
+            und Projektmanagement im Finanzsektor. Fokus auf IT-Kontrollen, Risikobewertung, Compliance und
+            klar dokumentierte technische Lösungen.
+          </p>
+        </div>
+        <aside class="hero-aside">
+          <div class="hero-aside-title">Schwerpunkte</div>
+          <ul>
+            <li>IT Audit &amp; Kontrollenprüfung in Finanzinstituten (FSI).</li>
+            <li>Bewertung von IT-Risiken, DORA-bezogene Assessments.</li>
+            <li>Projektarbeit in Software Engineering &amp; Systemarchitektur.</li>
+            <li>UML-Modellierung, Dokumentation, Projektplanung.</li>
+          </ul>
+        </aside>
+      </div>
+
+      <section class="tiles">
+        <article class="tile" onclick="showSection('cv')">
+          <h3 class="tile-title">CV / IT-Profil</h3>
+          <p class="tile-text">
+            Beruflicher Werdegang, Studium und technische Schwerpunkte im Bereich IT, Audit und Projekte.
+          </p>
+        </article>
+        <article class="tile" onclick="showSection('projekte')">
+          <h3 class="tile-title">Projekte</h3>
+          <p class="tile-text">
+            Auswahl universitärer Projekte mit Fokus auf Softwarearchitektur, Modellierung und Projektmanagement.
+          </p>
+        </article>
+        <article class="tile" onclick="showSection('kontakt')">
+          <h3 class="tile-title">Kontakt &amp; Zusammenarbeit</h3>
+          <p class="tile-text">
+            Möglichkeiten für Werkstudententätigkeiten, Praktika, freiberufliche Tätigkeiten oder fachlichen Austausch.
+          </p>
+        </article>
+        <article class="tile" onclick="showSection('recht')">
+          <h3 class="tile-title">Rechtliches &amp; Datenschutz</h3>
+          <p class="tile-text">
+            Impressum, Datenschutzhinweise und rechtliche Rahmenbedingungen dieser Seite.
+          </p>
+        </article>
+      </section>
+    </section>
+
+    <!-- CV -->
+    <section id="cv" class="section">
+      <div class="section-header">
+        <h2 class="section-title">CV / IT-Profil</h2>
+        <button class="btn-back" onclick="showSection('home')">← Zurück</button>
+      </div>
+
+      <article class="block">
+        <h3>Kurzprofil</h3>
+        <p>
+          Zielstrebiger Student der Wirtschaftsinformatik mit geplantem Bachelorabschluss und anschließender
+          Spezialisierung auf IT-Management. Kombination aus theoretischem Know-how und praktischer Erfahrung
+          in IT-Audit, IT-Administration, Projektarbeit und Compliance-Themen. Analytisches Denken, strukturierte
+          Arbeitsweise und Verantwortungsbewusstsein prägen das Profil.
+        </p>
+      </article>
+
+      <article class="block">
+        <h3>Berufliche Stationen</h3>
+
+        <p><strong>Werkstudent – IT Audit &amp; IT Risk Management (FSI) | Deloitte</strong><br />
+          seit 12/2025 · Frankfurt am Main
+        </p>
+        <ul>
+          <li>Mitarbeit im IT-Audit-Team (A&amp;A – IT, Controls &amp; Specialized Assurance, FSI) mit Fokus auf Prüfungen von IT-Kontrollen in Finanzinstituten.</li>
+          <li>Unterstützung bei IT-Prüfungen zu Zugangskontrollen, Change Management und IT-Operations.</li>
+          <li>Review grundlegender Netzwerk-Sicherheitskontrollen sowie Bewertung von Verschlüsselungs- und kryptografischen Maßnahmen.</li>
+          <li>Prüfung von Privileged Access Management (PAM) inkl. Analyse hochprivilegierter Accounts und Berechtigungsprozesse.</li>
+          <li>Unterstützung bei DORA-Assessments (Digital Operational Resilience Regulation).</li>
+          <li>Mitarbeit im Projektmanagement: Dokumentation, Workpapers, Kontrolltests und Abstimmung mit Kundenteams.</li>
+          <li>Risikobewertung im IT-Umfeld und Einordnung relevanter IT-Risiken.</li>
+        </ul>
+
+        <p><strong>IT-Specialist (Freiberuflich) | Deutsche Bank</strong><br />
+          10/2025 – 11/2025 · Frankfurt am Main
+        </p>
+        <ul>
+          <li>Unterstützung beim Rechenzentrumsumzug gemäß interner IT-Governance- und Sicherheitsrichtlinien.</li>
+          <li>Koordination technischer Abläufe und Dokumentation der Systemmigration.</li>
+          <li>Mitwirkung bei Risikoanalyse, Compliance-Prüfung und Audit-Vorbereitung.</li>
+        </ul>
+
+        <p><strong>IT-Specialist (Freiberuflich) | STADA Group</strong><br />
+          05/2025 – 08/2025 · Bad Vilbel
+        </p>
+        <ul>
+          <li>IT-Administration und Support im Rahmen eines Infrastrukturprojekts.</li>
+          <li>Sichere Datenlöschung und Verschlüsselung von Firmenhardware inkl. BIOS-Setup.</li>
+          <li>Vorbereitung und Übergabe von Systemen nach internen Compliance-Standards.</li>
+        </ul>
+      </article>
+
+      <article class="block">
+        <h3>Ausbildung</h3>
+        <p><strong>Frankfurt University of Applied Sciences</strong> – Wirtschaftsinformatik (B.Sc.), seit 10/2023</p>
+        <p><strong>Interkulturelle Schule Rhein-Main</strong> – Fachhochschulreife (Wirtschaft &amp; Verwaltung), 09/2021 – 07/2023</p>
+      </article>
+
+      <article class="block">
+        <h3>Fachliche Schwerpunkte &amp; Skills</h3>
+        <p><strong>Technische Kompetenzen:</strong> Java, Python, SQL, Grundlagen Webentwicklung.</p>
+        <p><strong>Tools &amp; Plattformen:</strong> Microsoft Intune, Jira, Confluence, MS Project, Apple Business Manager, Automate.</p>
+        <p><strong>Schwerpunkte:</strong> IT-Administration, IT-Audit &amp; Compliance, Systemmigration, Projektplanung, Dokumentation.</p>
+        <p><strong>Sprachen:</strong> Deutsch (Muttersprache), Englisch (fließend), Arabisch (Muttersprache).</p>
+      </article>
+    </section>
+
+    <!-- PROJEKTE -->
+    <section id="projekte" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Projekte</h2>
+        <button class="btn-back" onclick="showSection('home')">← Zurück</button>
+      </div>
+
+      <article class="block">
+        <h3>Software-Engineering – Bezahlvorgang im verteilten Warenkorbsystem</h3>
+        <p><strong>Modul: Software Engineering · Note: 1,0</strong></p>
+        <ul>
+          <li><strong>Zielsetzung:</strong> Konzeption und Modellierung des Bezahlungsvorgangs innerhalb eines verteilten Warenkorbsystems zur Vertiefung des Verständnisses von Softwarearchitektur und Systemdesign.</li>
+          <li><strong>Anforderungsanalyse:</strong> Systematische Erfassung und Beschreibung der Kernfunktionen des Bezahlprozesses, einschließlich Transaktionsabwicklung, Validierung und Kommunikation mit externen Zahlungsdiensten.</li>
+          <li><strong>UML-Modellierung:</strong> Erstellung einer umfassenden technischen Dokumentation mithilfe von Use-Case-, Klassen-, Aktivitäts-, Sequenz- und Zustandsdiagrammen.</li>
+          <li><strong>Systemarchitektur:</strong> Entwurf einer modularen, serviceorientierten Architektur mit klar abgegrenzten Komponenten für Zahlungsabwicklung, Warenkorbverwaltung und Bestellprozess.</li>
+          <li><strong>Ergebnis:</strong> Entwicklung eines vollständig dokumentierten Softwarekonzepts mit klar definierten Schnittstellen als Grundlage für eine spätere Implementierung.</li>
+          <li><strong>Lernergebnisse:</strong> Vertiefte Kenntnisse im Requirements Engineering, in objektorientierter Modellierung und in der strukturierten Anwendung von UML im Rahmen komplexer Softwarearchitekturen.</li>
+        </ul>
+      </article>
+
+      <article class="block">
+        <h3>Projektmanagement – ERP-Dashboard & Projektsteuerung</h3>
+        <p><strong>Modul: Projektmanagement · Note: 1,0</strong></p>
+        <ul>
+          <li>Konzeption eines ERP-Dashboards auf Basis einer Cloud-Infrastruktur (u. a. Planung mit AWS-Komponenten) zur transparenten Darstellung von Projektkennzahlen und Fortschritt.</li>
+          <li>Erstellung eines detaillierten Projektstrukturplans (WBS) inklusive Aufwandsschätzung, COCOMO-orientierter Kalkulation, Terminplanung und Ermittlung des kritischen Pfads in MS Project.</li>
+          <li>Aufbau eines Risikoregisters und Durchführung einer Stakeholder-Analyse mit Bewertung von Einfluss und Interessen.</li>
+          <li>Kombination klassischer Projektmanagement-Methoden mit agilen Elementen (Scrum-orientierte Sprints, Reviews, kontinuierliches Feedback).</li>
+        </ul>
+      </article>
+
+      <article class="block">
+        <h3>Weitere Arbeiten</h3>
+        <ul>
+          <li>Interaktives Buzzword-Bingo-Mehrspielerspiel in Python (Textual) mit Shared-Memory-Kommunikation.</li>
+          <li>Kleinere Automatisierungs- und Infrastrukturprojekte im privaten Umfeld (Scripting, Tooling, Systemkonfiguration).</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Kontakt</h2>
+        <button class="btn-back" onclick="showSection('home')">← Zurück</button>
+      </div>
+
+      <article class="block">
+        <h3>Direkter Kontakt</h3>
+        <p><strong>E-Mail:</strong> boukayouabilal@icloud.com</p>
+        <p><strong>Telefon:</strong> +49 155 66030541</p>
+        <p class="muted">Anfragen am besten per E-Mail mit kurzer Beschreibung des Anliegens.</p>
+      </article>
+
+      <article class="block">
+        <h3>Kontaktformular</h3>
+        <form action="https://formspree.io/f/mjkqwvbo" method="POST">
+          <div class="form-group">
+            <label for="vorname">Vorname *</label>
+            <input id="vorname" name="Vorname" type="text" required />
+          </div>
+          <div class="form-group">
+            <label for="nachname">Nachname *</label>
+            <input id="nachname" name="Nachname" type="text" required />
+          </div>
+          <div class="form-group">
