@@ -3,179 +3,676 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bilal Boukayoua Portfolio</title>
+  <title>Bilal Boukayoua - Wirtschaftsinformatiker & IT Specialist</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      /* ... Design-System-Variablen ... */
-      --color-white: #fff;
-      --color-black: #111;
-      --color-primary: #21808d;
-      --color-bg: #11191e;
-      --focus-ring: 0 0 0 3px rgba(33,128,141,0.4);
-      --font-family-base: 'Fira Code', monospace;
-    }
-    body {
-      font-family: var(--font-family-base);
-      background: var(--color-bg);
-      color: var(--color-white);
+    * {
       margin: 0;
-      min-height: 100vh;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Fira Code', monospace;
+      background: #000000;
+      color: #ffffff;
+      line-height: 1.6;
       overflow-x: hidden;
     }
-    .code-bg {
+
+    /* Code Background Animation */
+    .code-background {
       position: fixed;
-      inset: 0;
-      z-index: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
       opacity: 0.22;
     }
-    .logo {
-      width: 70px; height: 70px;
-      background: url('https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/74ea7b27-6b2c-4fc5-b072-b850396e178e') center/contain no-repeat;
-      margin-right: 24px;
-      flex-shrink: 0;
-      filter: drop-shadow(0 2px 30px #21808d66);
+
+    .code-line {
+      position: absolute;
+      white-space: nowrap;
+      font-family: 'Fira Code', monospace;
+      font-size: 16px;
+      font-weight: 500;
+      pointer-events: none;
     }
+
+    @keyframes scrollCode {
+      from {
+        transform: translateX(100vw);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    .code-line {
+      animation: scrollCode linear infinite;
+    }
+
+    /* Navigation */
     nav {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 20px;
       padding: 20px 40px;
       position: relative;
-      z-index: 2;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-    nav .site-title {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-    nav .nav-links {
-      display: flex;
-      gap: 24px;
-      margin-left: auto;
-      font-size: 1rem;
-    }
-    nav .nav-links a {
-      color: var(--color-white);
-      text-decoration: none;
-      opacity: 0.8;
-      transition: opacity 0.2s;
+
+    .logo {
+      width: 70px;
+      height: 70px;
+      background: url('https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/74ea7b27-6b2c-4fc5-b072-b850396e178e') center/cover;
+      border-radius: 8px;
+      filter: drop-shadow(0 0 20px rgba(33, 128, 141, 0.4));
+      transition: filter 0.3s ease;
       cursor: pointer;
     }
-    nav .nav-links a:hover {
+
+    .logo:hover {
+      filter: drop-shadow(0 0 30px rgba(33, 128, 141, 0.6));
+    }
+
+    .site-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-left: 20px;
+      flex: 1;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
       opacity: 1;
       text-decoration: underline;
     }
-    .center-content {
+
+    /* Main Content */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Hero Section */
+    .hero {
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       min-height: 70vh;
       text-align: center;
-      gap: 24px;
-      z-index: 1;
+      padding: 60px 20px;
       position: relative;
-      margin-top: 24px;
+      z-index: 2;
     }
-    .welcome {
-      font-size: 2.5rem;
-      font-weight: 800;
-      letter-spacing: 6px;
-      margin-bottom: 12px;
+
+    .welcome-text {
+      font-size: 64px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: 4px;
+      animation: fadeIn 1s ease-out;
     }
-    .roles-row {
-      margin: 14px 0 32px 0;
+
+    .roles {
       display: flex;
       justify-content: center;
-      align-items: center;
-      gap: 12px;
+      flex-direction: column;
+      gap: 8px;
+      margin: 30px 0;
+      animation: fadeIn 1s ease-out 0.5s both;
     }
+
     .role-badge {
       font-size: 16px;
-      color: #fff;
-      background: rgba(34,197,94,0.13);
+      font-weight: 500;
+      color: #ffffff;
+      background: rgba(34, 197, 94, 0.13);
+      border: 1px solid rgba(34, 197, 94, 0.22);
       padding: 8px 18px;
       border-radius: 6px;
-      font-weight: 500;
-      border: 1px solid rgba(34,197,94,0.22);
-      box-shadow: 0 1px 5px #1117;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      display: inline-block;
+      width: fit-content;
+      margin: 0 auto;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
+
+    .profile-text {
+      max-width: 700px;
+      margin: 40px auto;
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
+      animation: fadeIn 1s ease-out 1s both;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Widgets Grid */
     .widgets-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 24px;
-      margin-top: 44px;
-      width: 100%;
-      max-width: 900px;
+      margin: 60px auto;
+      padding: 40px 20px;
+      max-width: 1000px;
+      animation: fadeIn 1s ease-out 1.5s both;
     }
+
     .widget {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 11px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 12px;
       padding: 28px 17px;
-      color: #fff;
-      font-size: 15px;
       cursor: pointer;
-      text-align: left;
-      min-height: 100px;
-      transition: all .18s;
-      box-shadow: 0 2px 10px #0003;
+      transition: all 0.3s ease;
+      text-align: center;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
+
     .widget:hover {
-      background: rgba(255,255,255,0.14);
-      border-color: rgba(34,197,94,0.23);
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(34, 197, 94, 0.23);
       transform: translateY(-4px) scale(1.011);
     }
-    /* ... weitere Styles (z.B. für Unterseiten, Section-Switch, Kontakt, Footer, mobile, ...) ... */
+
+    .widget-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+
+    .widget-description {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+    }
+
+    /* Sections */
+    .section {
+      display: none;
+      padding: 60px 20px;
+      min-height: 100vh;
+      animation: fadeIn 0.5s ease-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section-title {
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    /* Content Blocks */
+    .content-block {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+
+    .content-block h3 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+
+    .content-block p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 10px;
+    }
+
+    .content-block ul {
+      margin-left: 20px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .content-block li {
+      margin-bottom: 8px;
+    }
+
+    /* Form Styling */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #ffffff;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      color: #ffffff;
+      font-family: 'Fira Code', monospace;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .btn {
+      background: rgba(33, 128, 141, 0.2);
+      border: 1px solid rgba(33, 128, 141, 0.3);
+      color: #ffffff;
+      padding: 12px 30px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .btn:hover {
+      background: rgba(33, 128, 141, 0.4);
+      border-color: rgba(33, 128, 141, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-back {
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+
+    .success-message {
+      background: rgba(76, 175, 80, 0.2);
+      border: 1px solid rgba(76, 175, 80, 0.5);
+      color: #4caf50;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .welcome-text {
+        font-size: 36px;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-links {
+        gap: 15px;
+        font-size: 12px;
+      }
+
+      .widgets-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="code-bg"></div>
+  <!-- Code Background -->
+  <div class="code-background" id="codeBackground"></div>
+
+  <!-- Navigation -->
   <nav>
-    <div class="logo"></div>
+    <div class="logo" onclick="showSection('home')" style="cursor: pointer;"></div>
     <div class="site-title">Bilal Boukayoua</div>
-    <div class="nav-links">
-      <a onclick="showSection('start')">Home</a>
-      <a onclick="showSection('cv')">CV / IT Profil</a>
-      <a onclick="showSection('projekte')">Projekte</a>
-      <a onclick="showSection('kontakt')">Kontakt</a>
-      <a onclick="showSection('recht')">Rechtliches</a>
-    </div>
+    <ul class="nav-links">
+      <li><a onclick="showSection('home')">Home</a></li>
+      <li><a onclick="showSection('cv')">CV / IT-Profil</a></li>
+      <li><a onclick="showSection('projekte')">Projekte</a></li>
+      <li><a onclick="showSection('kontakt')">Kontakt</a></li>
+      <li><a onclick="showSection('recht')">Rechtliches</a></li>
+    </ul>
   </nav>
-  <main id="main-content">
-    <div id="start" class="center-content">
-      <div class="welcome">WELCOME</div>
-      <div class="roles-row">
-        <div class="role-badge">Wirtschaftsinformatiker & Freelancer IT Specialist</div>
-      </div>
-      <div>Engagierter Student der Wirtschaftsinformatik, erfahrener IT-Specialist (Freelancer) mit Fokus auf IT-Administration, Systemmigration und technische Beraterleistungen.</div>
-      <div class="widgets-grid">
-        <div class="widget" onclick="showSection('cv')"><strong>CV / IT-Profil</strong><br>Mein Lebenslauf, Skills und Background auf einen Blick.</div>
-        <div class="widget" onclick="showSection('projekte')"><strong>Projekte</strong><br>Ausgewählte IT-Projekte, Referenzen und Uni-Arbeiten.</div>
-        <div class="widget" onclick="showSection('kontakt')"><strong>Kontakt</strong><br>Schnell & unkompliziert Kontakt aufnehmen.</div>
-        <div class="widget" onclick="showSection('recht')"><strong>Rechtliches</strong><br>Impressum & Datenschutz.</div>
+
+  <!-- Home Section -->
+  <div id="home" class="section active">
+    <div class="container">
+      <div class="hero">
+        <div class="welcome-text">WELCOME</div>
+        
+        <div class="roles">
+          <div class="role-badge">Wirtschaftsinformatiker &amp; Freelancer IT Specialist</div>
+        </div>
+
+        <div class="profile-text">
+          Engagierter Student der Wirtschaftsinformatik mit dem Ziel, das Studium planmäßig in sieben Semestern abzuschließen. Erfahrung durch mehrere Tätigkeiten als Werkstudent in der IT-Systemadministration und zusätzlich freiberufliche Erfahrungen als IT-Techniker. Analytisches Denken, lösungsorientiertes Arbeiten sowie Organisation und Zeitmanagement gehören zu meinen Kernkompetenzen.
+        </div>
+
+        <div class="widgets-grid">
+          <div class="widget" onclick="showSection('cv')">
+            <div class="widget-title">CV / IT-Profil</div>
+            <div class="widget-description">Mein beruflicher Werdegang, Bildungsweg und technische Fähigkeiten auf einen Blick.</div>
+          </div>
+          <div class="widget" onclick="showSection('projekte')">
+            <div class="widget-title">Projekte</div>
+            <div class="widget-description">Ausgewählte IT-Projekte und universitäre Arbeiten mit Ergebnissen.</div>
+          </div>
+          <div class="widget" onclick="showSection('kontakt')">
+            <div class="widget-title">Anfrage stellen</div>
+            <div class="widget-description">Kontaktiere mich für Projekte, Beratung oder Zusammenarbeit.</div>
+          </div>
+          <div class="widget" onclick="showSection('recht')">
+            <div class="widget-title">Rechtliches &amp; Richtlinien</div>
+            <div class="widget-description">Impressum, Datenschutz und wichtige rechtliche Hinweise.</div>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- Weitere Sections wie Profil, Projekte, Kontakt, Recht ausklappbar ... -->
-  </main>
+  </div>
+
+  <!-- CV Section -->
+  <div id="cv" class="section">
+    <div class="container">
+      <button class="btn btn-back" onclick="showSection('home')">← Zurück</button>
+      <h2 class="section-title">CV / IT-Profil</h2>
+      
+      <div class="content-block">
+        <h3>Kurzprofil</h3>
+        <p>Engagierter Student der Wirtschaftsinformatik mit praktischer Erfahrung in der IT-Administration, RZ-Umzügen und Systemmigration. Kompetente Fachkenntnisse in Microsoft Intune, Jira, Confluence und IT-Governance.</p>
+      </div>
+
+      <div class="content-block">
+        <h3>Berufliche Erfahrung</h3>
+        <p><strong>IT-Specialist (Freiberuflich)</strong> – Deloitte, Frankfurt<br>12/2025 – heute</p>
+        <ul>
+          <li>Aufgaben werden noch definiert</li>
+        </ul>
+
+        <p style="margin-top: 20px;"><strong>IT-Specialist (Freiberuflich)</strong> – Deutsche Bank, Frankfurt<br>10/2025 – 11/2025</p>
+        <ul>
+          <li>Unterstützung beim RZ-Umzug gemäß interner IT-Governance- und Sicherheitsrichtlinien</li>
+          <li>Koordination technischer Abläufe und Dokumentation der Systemmigration</li>
+          <li>Sichere Datenlöschung nach DSGVO- und internen Compliance-Vorgaben</li>
+        </ul>
+
+        <p style="margin-top: 20px;"><strong>IT-Specialist (Freiberuflich)</strong> – STADA Group, Bad Vilbel<br>05/2025 – 08/2025</p>
+        <ul>
+          <li>IT-Administration und Benutzerverwaltung über Microsoft Intune</li>
+          <li>Verwaltung und Konfiguration von Endgeräten sowie Sicherstellung der Geräte-Compliance</li>
+          <li>Dokumentation und Optimierung von IT-Prozessen</li>
+        </ul>
+      </div>
+
+      <div class="content-block">
+        <h3>Bildungsweg</h3>
+        <p><strong>Bachelor of Science – Wirtschaftsinformatik</strong><br>Frankfurt University of Applied Sciences, 10/2022 – 03/2026</p>
+        <ul>
+          <li>Ziel: Abschluss in 7 Semestern</li>
+        </ul>
+
+        <p style="margin-top: 20px;"><strong>Fachabitur – Wirtschaft und Verwaltung</strong><br>Interkulturelle Schule Rhein Main, 08/2020 – 07/2022</p>
+        <ul>
+          <li>Abschluss: 1,8</li>
+        </ul>
+      </div>
+
+      <div class="content-block">
+        <h3>Technische Fähigkeiten</h3>
+        <p><strong>Programmierung:</strong> Java, Python, SQL</p>
+        <p><strong>Tools &amp; Systeme:</strong> Microsoft Intune, Jira, Confluence, MS Project</p>
+        <p><strong>Fachkompetenzen:</strong> IT-Administration, Compliance &amp; Datenschutz, Systemmigration, RZ-Umzüge</p>
+      </div>
+
+      <div class="content-block">
+        <h3>Sprachen</h3>
+        <p>🇩🇪 Deutsch (Muttersprache)</p>
+        <p>🇬🇧 Englisch (Fließend)</p>
+        <p>🇸🇦 Arabisch (Grundkenntnisse)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projekte Section -->
+  <div id="projekte" class="section">
+    <div class="container">
+      <button class="btn btn-back" onclick="showSection('home')">← Zurück</button>
+      <h2 class="section-title">Projekte</h2>
+      
+      <div class="content-block">
+        <h3>Supply Chain Management (SCM) System</h3>
+        <p><strong>Zeitraum:</strong> 6 Monate (Okt. 2024 – März 2025)</p>
+        <p><strong>Note:</strong> 1,0</p>
+        <ul>
+          <li>Entwicklung eines webbasierten Supply-Chain-Management-Systems zur digitalen Verwaltung von Beständen, Bestellungen und Bezahlvorgängen im Großhandel</li>
+          <li>Anforderungsanalyse und Definition zentraler Funktionen (Produkt- und Bestandsverwaltung, Benutzerverwaltung, Zahlungsabwicklung)</li>
+          <li>Konzeption und Umsetzung einer Microservice-Architektur mit mehreren Services und API-Gateway</li>
+          <li>Einsatz von Spring Boot (Backend), React.js (Frontend), JWT, OpenAPI, GraphQL</li>
+          <li>Implementierung von Admin-Panel und User-Panel mit Produktsuche, Warenkorb und Bezahlvorgang</li>
+        </ul>
+      </div>
+
+      <div class="content-block">
+        <h3>Buzzword Bingo – Interaktives Mehrspieler-Konsolenspiel</h3>
+        <p><strong>Zeitraum:</strong> 6 Monate</p>
+        <p><strong>Note:</strong> 1,0</p>
+        <ul>
+          <li>Entwicklung eines interaktiven „Buzzword Bingo"-Spiels in Python mit der Textual-Bibliothek</li>
+          <li>Mehrspieler-Design mit eigenen Prozessen und Interprozesskommunikation</li>
+          <li>Dynamische Generierung der Bingo-Karten (Größe & Wortlisten konfigurierbar)</li>
+        </ul>
+      </div>
+
+      <div class="content-block">
+        <h3>Projektmanagement Modul</h3>
+        <p><strong>Zeitraum:</strong> 6 Monate – Note 1,0</p>
+        <ul>
+          <li>Komplexe Projektplanung mit WBS, Risikoanalysen und Stakeholder-Analyse</li>
+        </ul>
+      </div>
+
+      <div class="content-block">
+        <h3>Software-Engineering Modul</h3>
+        <p><strong>Zeitraum:</strong> 6 Monate – Note 1,0</p>
+        <ul>
+          <li>BPMN-/UML-Modellierung, ER-Modelle, Architekturkonzepte und Implementierung</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kontakt Section -->
+  <div id="kontakt" class="section">
+    <div class="container">
+      <button class="btn btn-back" onclick="showSection('home')">← Zurück</button>
+      <h2 class="section-title">Kontakt &amp; Anfrage</h2>
+      
+      <div class="content-block">
+        <h3>Kontaktinformationen</h3>
+        <p><strong>E-Mail:</strong> boukayouabilal@icloud.com</p>
+        <p><strong>Telefon:</strong> +49 155 66030541</p>
+      </div>
+
+      <div class="content-block">
+        <h3>Kontaktformular</h3>
+        <form action="https://formspree.io/f/mjkqwvbo" method="POST" id="contactForm">
+          <div class="form-group">
+            <label for="vorname">Vorname *</label>
+            <input type="text" id="vorname" name="Vorname" required>
+          </div>
+          <div class="form-group">
+            <label for="nachname">Nachname *</label>
+            <input type="text" id="nachname" name="Nachname" required>
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail *</label>
+            <input type="email" id="email" name="Email" required>
+          </div>
+          <div class="form-group">
+            <label for="telefon">Telefonnummer</label>
+            <input type="tel" id="telefon" name="Telefon">
+          </div>
+          <div class="form-group">
+            <label for="nachricht">Nachricht / Projektbeschreibung *</label>
+            <textarea id="nachricht" name="Nachricht" required></textarea>
+          </div>
+
+          <input type="hidden" name="_replyto" value="boukayouabilal@icloud.com">
+          <input type="hidden" name="_subject" value="Neue Anfrage über bb-it-services.com">
+
+          <button type="submit" class="btn">Anfrage senden</button>
+        </form>
+        <div id="successMessage" class="success-message">
+          Danke für deine Anfrage! Bitte bestätige deine E-Mail über Formspree, falls nötig.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rechtliches Section -->
+  <div id="recht" class="section">
+    <div class="container">
+      <button class="btn btn-back" onclick="showSection('home')">← Zurück</button>
+      <h2 class="section-title">Rechtliches &amp; Datenschutz</h2>
+      
+      <div class="content-block">
+        <h3>Impressum</h3>
+        <p><strong>Verantwortlicher:</strong></p>
+        <p>Bilal Boukayoua<br>
+        E-Mail: boukayouabilal@icloud.com<br>
+        Telefon: +49 155 66030541</p>
+      </div>
+
+      <div class="content-block">
+        <h3>Datenschutzerklärung</h3>
+        <p><strong>1. Datenschutz auf einen Blick</strong></p>
+        <p>Diese Website erhebt, nutzt und verarbeitet personenbezogene Daten nur im notwendigen Umfang und entsprechend den Bestimmungen der DSGVO.</p>
+        
+        <p style="margin-top: 15px;"><strong>2. Kontaktformular</strong></p>
+        <p>Wenn du das Kontaktformular ausfüllst, werden deine Angaben (Name, E-Mail, Telefon, Nachricht) gespeichert und für die Beantwortung deiner Anfrage verwendet und über Formspree an deine E-Mail weitergeleitet.</p>
+        
+        <p style="margin-top: 15px;"><strong>3. Cookies &amp; Tracking</strong></p>
+        <p>Diese Website nutzt keine Cookies oder Tracking-Tools.</p>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // Colorful background-Codeanimation
-    document.querySelector(".code-bg").innerHTML = Array.from({length: 12}).map(()=>
-      `<pre style="color: #${["06b6d4","a855f7","ec4899","fbbf24","10b981"][~~(Math.random()*5)]};padding:0 0 0 .5em;font-size:18px;opacity:.55;white-space:pre;pointer-events:none;position:absolute;top:${Math.random()*96}%;left:${Math.random()*97}%;transform:rotate(${Math.round((Math.random()-.5)*8)}deg);font-family:'Fira Code',monospace;">
-const user = "Bilal";
-let skills = ["Java", "Python", "SQL"];
-// ... more code
-</pre>`).join('');
-    function showSection(section) {
-      // Dummy, müsste ARIA+HTML für echte Unterseiten/Section Filled werden!
-      alert('Du hast "'+section+'" gewählt ☑️ (Funktion heute: noch Dummy)');
+    // Initialize Code Background
+    function initCodeBackground() {
+      const codeSnippets = [
+        'const portfolio = { name: "Bilal", skills: ["Java", "Python", "SQL"] }',
+        'public class ITSpecialist { public void consultWithClients() {} }',
+        'SELECT * FROM projects WHERE status = "completed" AND rating = 1.0',
+        'function deployWebsite() { return "success"; }',
+        'class DataMigration { def migrate(self): pass }',
+        'SELECT customer_id, COUNT(*) FROM orders GROUP BY customer_id',
+        'interface ITServices { void provideSupport(); void handleRZ(); }',
+        'git commit -m "Deploy portfolio website successfully"',
+        'npm install && npm run build && npm start',
+        'def encrypt_data(data): return hashlib.sha256(data.encode()).hexdigest()'
+      ];
+
+      const colors = ['#06b6d4', '#a855f7', '#ec4899', '#fbbf24', '#10b981'];
+      const background = document.getElementById('codeBackground');
+
+      codeSnippets.forEach((snippet, index) => {
+        const line = document.createElement('div');
+        line.className = 'code-line';
+        line.textContent = snippet;
+        line.style.color = colors[index % colors.length];
+        line.style.top = Math.random() * 100 + '%';
+        line.style.animationDuration = (15 + Math.random() * 20) + 's';
+        line.style.animationDelay = (Math.random() * 5) + 's';
+        background.appendChild(line);
+      });
     }
+
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    // Optional: nur visuelle Bestätigung nach Submit (Formspree macht den echten Versand)
+    const form = document.getElementById('contactForm');
+    if (form) {
+      form.addEventListener('submit', function() {
+        const msg = document.getElementById('successMessage');
+        if (msg) msg.classList.add('show');
+      });
+    }
+
+    window.addEventListener('load', initCodeBackground);
   </script>
 </body>
 </html>
-
