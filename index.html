@@ -1,678 +1,688 @@
 <!DOCTYPE html>
-<html lang="de" data-color-scheme="dark">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bilal Boukayoua - Wirtschaftsinformatiker & IT Specialist</title>
+  <title>Bilal Boukayoua – Wirtschaftsinformatiker & IT Specialist</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg: #020617;
+      --bg-panel: #0b1120;
+      --bg-panel-soft: #020617;
+      --border-subtle: rgba(148,163,184,0.35);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --accent: #2563eb;
+      --accent-soft: rgba(37,99,235,0.15);
+      --accent-strong: rgba(37,99,235,0.35);
     }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: 'Fira Code', monospace;
-      background: #000000;
-      color: #ffffff;
+      font-family: "Fira Code", monospace;
+      background: radial-gradient(circle at top, #020617 0, #020617 40%, #000 100%);
+      color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
     }
 
-    /* Code Background Animation */
-    .code-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-      opacity: 0.22;
-    }
+    a { color: inherit; text-decoration: none; }
 
-    .code-line {
-      position: absolute;
-      white-space: nowrap;
-      font-family: 'Fira Code', monospace;
-      font-size: 16px;
-      font-weight: 500;
-      pointer-events: none;
-    }
-
-    @keyframes scrollCode {
-      from {
-        transform: translateX(100vw);
-      }
-      to {
-        transform: translateX(-100%);
-      }
-    }
-
-    .code-line {
-      animation: scrollCode linear infinite;
+    /* Layout */
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px 48px;
+      position: relative;
+      z-index: 1;
     }
 
     /* Navigation */
     nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      position: relative;
+      position: sticky;
+      top: 0;
       z-index: 10;
-      background: rgba(0, 0, 0, 0.8);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 14px 20px;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(2,6,23,0.96), rgba(2,6,23,0.86));
+      border-bottom: 1px solid rgba(30,64,175,0.4);
     }
 
     .logo {
-      width: 70px;
-      height: 70px;
-      background: url('https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/74ea7b27-6b2c-4fc5-b072-b850396e178e') center/cover;
-      border-radius: 8px;
-      filter: drop-shadow(0 0 20px rgba(33, 128, 141, 0.4));
-      transition: filter 0.3s ease;
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      background: url("https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/74ea7b27-6b2c-4fc5-b072-b850396e178e") center/cover no-repeat;
+      box-shadow: 0 0 0 1px rgba(15,23,42,0.8), 0 12px 30px rgba(8,47,73,0.9);
       cursor: pointer;
+      flex-shrink: 0;
     }
 
-    .logo:hover {
-      filter: drop-shadow(0 0 30px rgba(33, 128, 141, 0.6));
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
 
-    .site-title {
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-left: 20px;
-      flex: 1;
+    .brand-name {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #f9fafb;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-muted);
     }
 
     .nav-links {
+      margin-left: auto;
       display: flex;
-      gap: 30px;
-      list-style: none;
+      gap: 18px;
+      font-size: 12px;
     }
 
     .nav-links a {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 14px;
-      opacity: 0.8;
-      transition: opacity 0.3s;
       cursor: pointer;
+      opacity: 0.78;
+      padding: 4px 0;
+      border-bottom: 1px solid transparent;
+      transition: opacity 0.18s, border-color 0.18s, color 0.18s;
     }
 
     .nav-links a:hover {
       opacity: 1;
-      text-decoration: underline;
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
-    /* Main Content */
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* Hero Section */
+    /* Hero */
     .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 70vh;
-      text-align: center;
-      padding: 60px 20px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .welcome-text {
-      font-size: 64px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      letter-spacing: 4px;
-      animation: fadeIn 1s ease-out;
-    }
-
-    .roles {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      gap: 8px;
-      margin: 30px 0;
-      animation: fadeIn 1s ease-out 0.5s both;
-    }
-
-    .role-badge {
-      font-size: 16px;
-      font-weight: 500;
-      color: #ffffff;
-      background: rgba(34, 197, 94, 0.13);
-      border: 1px solid rgba(34, 197, 94, 0.22);
-      padding: 8px 18px;
-      border-radius: 6px;
-      display: inline-block;
-      width: fit-content;
-      margin: 0 auto;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .profile-text {
-      max-width: 700px;
-      margin: 40px auto;
-      font-size: 16px;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.9);
-      animation: fadeIn 1s ease-out 1s both;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Widgets Grid */
-    .widgets-grid {
+      padding: 44px 0 34px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 24px;
-      margin: 60px auto;
-      padding: 40px 20px;
-      max-width: 1000px;
-      animation: fadeIn 1s ease-out 1.5s both;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 32px;
+      align-items: center;
     }
 
-    .widget {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      border-radius: 12px;
-      padding: 28px 17px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-align: center;
-      min-height: 120px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    .hero-left h1 {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: #f9fafb;
     }
 
-    .widget:hover {
-      background: rgba(255, 255, 255, 0.14);
-      border-color: rgba(34, 197, 94, 0.23);
-      transform: translateY(-4px) scale(1.011);
+    .hero-left h2 {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-main);
+      margin-bottom: 18px;
     }
 
-    .widget-title {
-      font-size: 18px;
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      background: radial-gradient(circle at top left, rgba(37,99,235,0.18), rgba(15,23,42,0.98));
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-main);
+      margin-bottom: 16px;
+    }
+
+    .hero-summary {
+      font-size: 13px;
+      color: var(--text-main);
+      max-width: 520px;
+    }
+
+    .hero-right {
+      background: radial-gradient(circle at top, rgba(15,23,42,0.96), rgba(2,6,23,1));
+      border-radius: 18px;
+      padding: 20px 18px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 18px 50px rgba(15,23,42,0.95);
+      font-size: 12px;
+      color: var(--text-main);
+    }
+
+    .hero-right-title {
+      font-size: 12px;
       font-weight: 600;
-      margin-bottom: 12px;
-      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 10px;
+      color: var(--accent);
     }
 
-    .widget-description {
-      font-size: 14px;
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.6;
+    .hero-right ul {
+      margin-left: 18px;
+      color: var(--text-main);
+    }
+
+    .hero-right li { margin-bottom: 6px; }
+
+    /* Overview tiles */
+    .tiles {
+      margin: 10px 0 34px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .tile {
+      background: rgba(11,17,32,0.96);
+      border-radius: 16px;
+      padding: 20px 18px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 14px 40px rgba(15,23,42,0.92);
+      cursor: pointer;
+      transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s, background 0.18s;
+    }
+
+    .tile:hover {
+      border-color: var(--accent);
+      background: radial-gradient(circle at top left, var(--accent-soft), rgba(11,17,32,0.98));
+      transform: translateY(-4px);
+      box-shadow: 0 18px 60px rgba(15,23,42,0.96);
+    }
+
+    .tile-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #f9fafb;
+    }
+
+    .tile-text {
+      font-size: 12px;
+      color: var(--text-main);
     }
 
     /* Sections */
     .section {
       display: none;
-      padding: 60px 20px;
-      min-height: 100vh;
-      animation: fadeIn 0.5s ease-out;
-      position: relative;
-      z-index: 1;
+      padding: 32px 0 10px;
     }
 
-    .section.active {
-      display: block;
+    .section.active { display: block; }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      gap: 10px;
     }
 
     .section-title {
-      font-size: 40px;
-      font-weight: 700;
-      margin-bottom: 40px;
-      text-align: center;
-    }
-
-    /* Content Blocks */
-    .content-block {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 30px;
-      margin-bottom: 30px;
-    }
-
-    .content-block h3 {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 600;
-      margin-bottom: 15px;
-      color: #ffffff;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #f9fafb;
     }
 
-    .content-block p {
+    .btn-back {
+      font-size: 11px;
+      border-radius: 999px;
+      padding: 6px 12px;
+      background: transparent;
+      border: 1px solid rgba(148,163,184,0.6);
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.18s, border-color 0.18s, transform 0.18s;
+    }
+
+    .btn-back:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .block {
+      background: var(--bg-panel);
+      border-radius: 16px;
+      padding: 20px 18px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 16px 48px rgba(15,23,42,0.92);
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    .block h3 {
       font-size: 15px;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 10px;
-    }
-
-    .content-block ul {
-      margin-left: 20px;
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 15px;
-      line-height: 1.8;
-    }
-
-    .content-block li {
+      font-weight: 600;
       margin-bottom: 8px;
+      color: #e5e7eb;
     }
 
-    /* Form Styling */
-    .form-group {
-      margin-bottom: 20px;
+    .block p {
+      font-size: 13px;
+      color: var(--text-main);
+      margin-bottom: 6px;
     }
+
+    .block ul {
+      margin-left: 18px;
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    .block li { margin-bottom: 6px; }
+
+    .muted { color: var(--text-muted); }
+
+    /* Form */
+    .form-group { margin-bottom: 14px; }
 
     .form-group label {
       display: block;
-      margin-bottom: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      color: #ffffff;
+      margin-bottom: 4px;
+      font-size: 12px;
+      color: var(--text-main);
     }
 
     .form-group input,
     .form-group textarea {
       width: 100%;
-      padding: 12px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      color: #ffffff;
-      font-family: 'Fira Code', monospace;
-      font-size: 14px;
-      transition: all 0.3s ease;
+      padding: 9px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-panel-soft);
+      color: var(--text-main);
+      font-family: "Fira Code", monospace;
+      font-size: 12px;
+      outline: none;
+      transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
     }
 
     .form-group input:focus,
     .form-group textarea:focus {
-      outline: none;
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.4);
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-strong);
+      background: #020617;
     }
 
-    .form-group textarea {
-      resize: vertical;
-      min-height: 150px;
-    }
+    .form-group textarea { min-height: 130px; resize: vertical; }
 
-    .btn {
-      background: rgba(33, 128, 141, 0.2);
-      border: 1px solid rgba(33, 128, 141, 0.3);
-      color: #ffffff;
-      padding: 12px 30px;
-      border-radius: 8px;
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      background: linear-gradient(to right, var(--accent), #1d4ed8);
+      color: white;
+      font-size: 12px;
       cursor: pointer;
-      font-size: 14px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      font-family: 'Fira Code', monospace;
+      transition: transform 0.18s, box-shadow 0.18s;
     }
 
-    .btn:hover {
-      background: rgba(33, 128, 141, 0.4);
-      border-color: rgba(33, 128, 141, 0.5);
-      transform: translateY(-2px);
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(37,99,235,0.6);
     }
 
-    .btn-back {
-      display: inline-block;
-      margin-bottom: 30px;
+    .hint {
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
     }
 
-    .success-message {
-      background: rgba(76, 175, 80, 0.2);
-      border: 1px solid rgba(76, 175, 80, 0.5);
-      color: #4caf50;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
-      display: none;
-    }
-
-    .success-message.show {
-      display: block;
+    footer {
+      margin-top: 40px;
+      padding: 14px 20px 20px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+      border-top: 1px solid rgba(15,23,42,0.9);
+      background: #020617;
     }
 
     /* Responsive */
-    @media (max-width: 768px) {
-      .welcome-text {
-        font-size: 36px;
-      }
-
+    @media (max-width: 900px) {
       nav {
-        flex-direction: column;
-        gap: 15px;
+        flex-wrap: wrap;
+        row-gap: 10px;
       }
-
+      .brand-block { flex: 1; }
       .nav-links {
-        gap: 15px;
-        font-size: 12px;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        font-size: 11px;
       }
-
-      .widgets-grid {
+      .hero {
         grid-template-columns: 1fr;
+        padding-top: 30px;
       }
+      .hero-left h1 {
+        font-size: 24px;
+        letter-spacing: 0.16em;
+      }
+      .hero-left h2 { font-size: 17px; }
+      .tiles { grid-template-columns: 1fr; }
+      .page { padding: 0 14px 40px; }
+    }
 
-      .section-title {
-        font-size: 28px;
-      }
+    @media (max-width: 500px) {
+      .brand-name { font-size: 16px; letter-spacing: 0.12em; }
+      .hero-left h1 { font-size: 22px; letter-spacing: 0.12em; }
+      .hero-left h2 { font-size: 16px; }
     }
   </style>
 </head>
 <body>
-  <!-- Code Background -->
-  <div class="code-background" id="codeBackground"></div>
-
-  <!-- Navigation -->
   <nav>
-    <div class="logo" onclick="showSection('home')" style="cursor: pointer;"></div>
-    <div class="site-title">Bilal Boukayoua</div>
-    <ul class="nav-links">
-      <li><a onclick="showSection('home')">Home</a></li>
-      <li><a onclick="showSection('cv')">CV / IT-Profil</a></li>
-      <li><a onclick="showSection('projekte')">Projekte</a></li>
-      <li><a onclick="showSection('kontakt')">Kontakt</a></li>
-      <li><a onclick="showSection('recht')">Rechtliches</a></li>
-    </ul>
+    <div class="logo" onclick="showSection('home')"></div>
+    <div class="brand-block">
+      <div class="brand-name">Bilal Boukayoua</div>
+      <div class="brand-sub">Wirtschaftsinformatiker · IT Audit · IT Risk &amp; Projects</div>
+    </div>
+    <div class="nav-links">
+      <a onclick="showSection('home')">Home</a>
+      <a onclick="showSection('cv')">CV / Profil</a>
+      <a onclick="showSection('projekte')">Projekte</a>
+      <a onclick="showSection('kontakt')">Kontakt</a>
+      <a onclick="showSection('recht')">Rechtliches</a>
+    </div>
   </nav>
 
-  <!-- Home Section -->
-  <div id="home" class="section active">
-    <div class="container">
+  <main class="page">
+    <!-- HOME -->
+    <section id="home" class="section active">
       <div class="hero">
-        <div class="welcome-text">WELCOME</div>
-        
-        <div class="roles">
-          <div class="role-badge">Wirtschaftsinformatiker &amp; Freelancer IT Specialist</div>
+        <div class="hero-left">
+          <h1>WELCOME</h1>
+          <h2>Wirtschaftsinformatiker &amp; IT Specialist</h2>
+          <div class="hero-pill">
+            Profil: IT Audit · IT Risk · Projektarbeit
+          </div>
+          <p class="hero-summary">
+            Zielstrebiger Student der Wirtschaftsinformatik mit praktischer Erfahrung in IT-Audit, IT-Administration
+            und Projektmanagement im Finanzsektor. Fokus auf IT-Kontrollen, Risikobewertung, Compliance und sauber
+            dokumentierte technische Lösungen.
+          </p>
         </div>
-
-        <div class="profile-text">
-          Engagierter Student der Wirtschaftsinformatik mit dem Ziel, das Studium planmäßig in sieben Semestern abzuschließen. Erfahrung durch mehrere Tätigkeiten als Werkstudent in der IT-Systemadministration und zusätzlich freiberufliche Erfahrungen als IT-Techniker. Analytisches Denken, lösungsorientiertes Arbeiten sowie Organisation und Zeitmanagement gehören zu meinen Kernkompetenzen.
-        </div>
-
-        <div class="widgets-grid">
-          <div class="widget" onclick="showSection('cv')">
-            <div class="widget-title">CV / IT-Profil</div>
-            <div class="widget-description">Mein beruflicher Werdegang, Bildungsweg und technische Fähigkeiten auf einen Blick.</div>
-          </div>
-          <div class="widget" onclick="showSection('projekte')">
-            <div class="widget-title">Projekte</div>
-            <div class="widget-description">Ausgewählte IT-Projekte und universitäre Arbeiten mit Ergebnissen.</div>
-          </div>
-          <div class="widget" onclick="showSection('kontakt')">
-            <div class="widget-title">Anfrage stellen</div>
-            <div class="widget-description">Kontaktiere mich für Projekte, Beratung oder Zusammenarbeit.</div>
-          </div>
-          <div class="widget" onclick="showSection('recht')">
-            <div class="widget-title">Rechtliches &amp; Richtlinien</div>
-            <div class="widget-description">Impressum, Datenschutz und wichtige rechtliche Hinweise.</div>
-          </div>
-        </div>
+        <aside class="hero-right">
+          <div class="hero-right-title">Fokusthemen</div>
+          <ul>
+            <li>IT Audit &amp; Risikobewertung in Finanzinstituten (FSI).</li>
+            <li>IT-Governance, Zugangskontrollen, Change Management.</li>
+            <li>Projektarbeit in Software Engineering &amp; Architektur.</li>
+            <li>Dokumentation, UML-Modellierung, Projektplanung.</li>
+          </ul>
+        </aside>
       </div>
-    </div>
-  </div>
 
-  <!-- CV Section -->
-  <div id="cv" class="section">
-    <div class="container">
-      <button class="btn btn-back" onclick="showSection('home')">← Zurück</button>
-      <h2 class="section-title">CV / IT-Profil</h2>
-      
-      <div class="content-block">
+      <section class="tiles">
+        <article class="tile" onclick="showSection('cv')">
+          <div class="tile-title">CV / IT-Profil</div>
+          <div class="tile-text">
+            Überblick über berufliche Stationen, Studium und technische Schwerpunkte im Bereich IT, Audit und Projekte.
+          </div>
+        </article>
+        <article class="tile" onclick="showSection('projekte')">
+          <div class="tile-title">Projekte</div>
+          <div class="tile-text">
+            Auswahl universitärer Projekte mit Fokus auf Architektur, Projektmanagement und modellgetriebener Entwicklung.
+          </div>
+        </article>
+        <article class="tile" onclick="showSection('kontakt')">
+          <div class="tile-title">Kontakt &amp; Zusammenarbeit</div>
+          <div class="tile-text">
+            Möglichkeiten für Werkstudententätigkeiten, Praktika, freiberufliche Projekte oder fachlichen Austausch.
+          </div>
+        </article>
+        <article class="tile" onclick="showSection('recht')">
+          <div class="tile-title">Rechtliches &amp; Datenschutz</div>
+          <div class="tile-text">
+            Impressum, Datenschutzhinweise und rechtliche Rahmenbedingungen dieser Seite.
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <!-- CV -->
+    <section id="cv" class="section">
+      <div class="section-header">
+        <h2 class="section-title">CV / IT-Profil</h2>
+        <button class="btn-back" onclick="showSection('home')">← Zurück</button>
+      </div>
+
+      <article class="block">
         <h3>Kurzprofil</h3>
-        <p>Engagierter Student der Wirtschaftsinformatik mit praktischer Erfahrung in der IT-Administration, RZ-Umzügen und Systemmigration. Kompetente Fachkenntnisse in Microsoft Intune, Jira, Confluence und IT-Governance.</p>
-      </div>
+        <p>
+          Zielstrebiger Student der Wirtschaftsinformatik mit geplantem Bachelorabschluss und anschließender
+          Spezialisierung im Master auf IT-Management. Kombination aus theoretischem Know-how und praktischer
+          Erfahrung in IT-Audit, IT-Administration, Projektarbeit und Compliance-Themen. Analytisches Denken,
+          strukturierte Arbeitsweise und Verantwortungsbewusstsein zeichnen das Profil aus.
+        </p>
+      </article>
 
-      <div class="content-block">
+      <article class="block">
         <h3>Berufliche Erfahrung</h3>
-        <p><strong>IT-Specialist (Freiberuflich)</strong> – Deloitte, Frankfurt<br>12/2025 – heute</p>
+
+        <p><strong>Werkstudent – IT Audit &amp; IT Risk Management (FSI) | Deloitte</strong><br>
+          seit 12/2025 · Frankfurt am Main
+        </p>
         <ul>
-          <li>Aufgaben werden noch definiert</li>
+          <li>Mitarbeit im IT-Audit-Team (A&amp;A – IT, Controls &amp; Specialized Assurance, FSI) mit Fokus auf die Prüfung von IT-Kontrollen in Finanzinstituten.</li>
+          <li>Durchführung und Unterstützung von IT-Prüfungen, u. a. zu Zugangskontrollen, Change Management und IT-Operations.</li>
+          <li>Review grundlegender Netzwerk-Sicherheitskontrollen sowie Bewertung von Verschlüsselungs- und kryptografischen Maßnahmen.</li>
+          <li>Prüfung von Privileged Access Management (PAM) inkl. Analyse hochprivilegierter Accounts und Berechtigungsprozesse.</li>
+          <li>Unterstützung bei DORA-Assessments (Digital Operational Resilience Regulation) im Rahmen von IT-Risiko- und Resilienzprüfungen.</li>
+          <li>Mitarbeit im Projektmanagement: Dokumentation, Workpapers, Kontrolltests und Abstimmung mit Kundenteams.</li>
+          <li>Risikobewertung im IT-Umfeld und Einordnung relevanter IT-Risiken.</li>
         </ul>
 
-        <p style="margin-top: 20px;"><strong>IT-Specialist (Freiberuflich)</strong> – Deutsche Bank, Frankfurt<br>10/2025 – 11/2025</p>
+        <p><strong>IT-Specialist (Freiberuflich) | Deutsche Bank</strong><br>
+          10/2025 – 11/2025 · Frankfurt am Main
+        </p>
         <ul>
-          <li>Unterstützung beim RZ-Umzug gemäß interner IT-Governance- und Sicherheitsrichtlinien</li>
-          <li>Koordination technischer Abläufe und Dokumentation der Systemmigration</li>
-          <li>Sichere Datenlöschung nach DSGVO- und internen Compliance-Vorgaben</li>
+          <li>Unterstützung beim Rechenzentrumsumzug gemäß interner IT-Governance- und Sicherheitsrichtlinien.</li>
+          <li>Koordination technischer Abläufe und Dokumentation der Systemmigration.</li>
+          <li>Mitwirkung bei Risikoanalyse, Compliance-Prüfung und Audit-Vorbereitung.</li>
         </ul>
 
-        <p style="margin-top: 20px;"><strong>IT-Specialist (Freiberuflich)</strong> – STADA Group, Bad Vilbel<br>05/2025 – 08/2025</p>
+        <p><strong>IT-Specialist (Freiberuflich) | STADA Group</strong><br>
+          05/2025 – 08/2025 · Bad Vilbel
+        </p>
         <ul>
-          <li>IT-Administration und Benutzerverwaltung über Microsoft Intune</li>
-          <li>Verwaltung und Konfiguration von Endgeräten sowie Sicherstellung der Geräte-Compliance</li>
-          <li>Dokumentation und Optimierung von IT-Prozessen</li>
+          <li>IT-Administration und Support im Rahmen eines Infrastrukturprojekts.</li>
+          <li>Sichere Datenlöschung und Verschlüsselung von Firmenhardware inkl. BIOS-Setup.</li>
+          <li>Vorbereitung und Übergabe von Systemen gemäß internen Compliance-Vorgaben.</li>
         </ul>
-      </div>
+      </article>
 
-      <div class="content-block">
+      <article class="block">
         <h3>Bildungsweg</h3>
-        <p><strong>Bachelor of Science – Wirtschaftsinformatik</strong><br>Frankfurt University of Applied Sciences, 10/2022 – 03/2026</p>
-        <ul>
-          <li>Ziel: Abschluss in 7 Semestern</li>
-        </ul>
+        <p><strong>Frankfurt University of Applied Sciences</strong> – Wirtschaftsinformatik (B.Sc.) · seit 10/2023</p>
+        <p><strong>Interkulturelle Schule Rhein-Main</strong> – Fachhochschulreife (Wirtschaft &amp; Verwaltung) · 09/2021 – 07/2023</p>
+      </article>
 
-        <p style="margin-top: 20px;"><strong>Fachabitur – Wirtschaft und Verwaltung</strong><br>Interkulturelle Schule Rhein Main, 08/2020 – 07/2022</p>
-        <ul>
-          <li>Abschluss: 1,8</li>
-        </ul>
-      </div>
-
-      <div class="content-block">
+      <article class="block">
         <h3>Technische Fähigkeiten</h3>
-        <p><strong>Programmierung:</strong> Java, Python, SQL</p>
-        <p><strong>Tools &amp; Systeme:</strong> Microsoft Intune, Jira, Confluence, MS Project</p>
-        <p><strong>Fachkompetenzen:</strong> IT-Administration, Compliance &amp; Datenschutz, Systemmigration, RZ-Umzüge</p>
+        <p><strong>Sprachen &amp; Technologien:</strong> Java, Python, SQL, Grundlagen Webentwicklung.</p>
+        <p><strong>Tools &amp; Plattformen:</strong> Microsoft Intune, Jira, Confluence, MS Project, Apple Business Manager, Automate.</p>
+        <p><strong>Fokusbereiche:</strong> IT-Administration, IT-Audit &amp; Compliance, Systemmigration, Projektplanung, Dokumentation.</p>
+      </article>
+
+      <article class="block">
+        <h3>Sprachkenntnisse</h3>
+        <p>Deutsch – Muttersprache</p>
+        <p>Englisch – fließend</p>
+        <p>Arabisch – Muttersprache</p>
+      </article>
+    </section>
+
+    <!-- PROJEKTE -->
+    <section id="projekte" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Projekte</h2>
+        <button class="btn-back" onclick="showSection('home')">← Zurück</button>
       </div>
 
-      <div class="content-block">
-        <h3>Sprachen</h3>
-        <p>🇩🇪 Deutsch (Muttersprache)</p>
-        <p>🇬🇧 Englisch (Fließend)</p>
-        <p>🇸🇦 Arabisch (Grundkenntnisse)</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Projekte Section -->
-  <div id="projekte" class="section">
-    <div class="container">
-      <button class="btn btn-back" onclick="showSection('home')">← Zurück</button>
-      <h2 class="section-title">Projekte</h2>
-      
-      <div class="content-block">
-        <h3>Supply Chain Management (SCM) System</h3>
-        <p><strong>Zeitraum:</strong> 6 Monate (Okt. 2024 – März 2025)</p>
-        <p><strong>Note:</strong> 1,0</p>
+      <article class="block">
+        <h3>Software-Engineering Projekt – Bezahlvorgang im verteilten Warenkorbsystem</h3>
+        <p><strong>Modul: Software Engineering – Note 1,0</strong></p>
         <ul>
-          <li>Entwicklung eines webbasierten Supply-Chain-Management-Systems zur digitalen Verwaltung von Beständen, Bestellungen und Bezahlvorgängen im Großhandel</li>
-          <li>Anforderungsanalyse und Definition zentraler Funktionen (Produkt- und Bestandsverwaltung, Benutzerverwaltung, Zahlungsabwicklung)</li>
-          <li>Konzeption und Umsetzung einer Microservice-Architektur mit mehreren Services und API-Gateway</li>
-          <li>Einsatz von Spring Boot (Backend), React.js (Frontend), JWT, OpenAPI, GraphQL</li>
-          <li>Implementierung von Admin-Panel und User-Panel mit Produktsuche, Warenkorb und Bezahlvorgang</li>
+          <li><strong>Zielsetzung:</strong> Konzeption und Modellierung des Bezahlungsvorgangs in einem verteilten Warenkorbsystem zur Vertiefung von Softwarearchitektur- und Systemdesign-Kompetenzen.</li>
+          <li><strong>Anforderungsanalyse:</strong> Strukturierte Erhebung der Kernfunktionen des Bezahlprozesses, u. a. Transaktionsabwicklung, Validierung und Kommunikation mit externen Zahlungsdiensten.</li>
+          <li><strong>UML-Modellierung:</strong> Erstellung einer vollständigen UML-Dokumentation (Use-Case-, Klassen-, Aktivitäts-, Sequenz- und Zustandsdiagramme) zur Darstellung von Abläufen, Datenflüssen und Systeminteraktionen.</li>
+          <li><strong>Systemarchitektur:</strong> Entwurf einer modularen, serviceorientierten Architektur mit klar abgegrenzten Komponenten für Zahlungsabwicklung, Warenkorbverwaltung und Bestellprozess.</li>
+          <li><strong>Ergebnis:</strong> Vollständig dokumentiertes Softwarekonzept mit definierten Schnittstellen als Grundlage für eine spätere Implementierung.</li>
+          <li><strong>Lernergebnisse:</strong> Vertiefung im Requirements Engineering, in objektorientierter Modellierung und in der strukturierten Anwendung von UML in komplexen Architekturen.</li>
         </ul>
-      </div>
+      </article>
 
-      <div class="content-block">
-        <h3>Buzzword Bingo – Interaktives Mehrspieler-Konsolenspiel</h3>
-        <p><strong>Zeitraum:</strong> 6 Monate</p>
-        <p><strong>Note:</strong> 1,0</p>
+      <article class="block">
+        <h3>Projektmanagement – ERP-Dashboard & Projektsteuerung</h3>
+        <p><strong>Modul: Projektmanagement – Note 1,0</strong></p>
         <ul>
-          <li>Entwicklung eines interaktiven „Buzzword Bingo"-Spiels in Python mit der Textual-Bibliothek</li>
-          <li>Mehrspieler-Design mit eigenen Prozessen und Interprozesskommunikation</li>
-          <li>Dynamische Generierung der Bingo-Karten (Größe & Wortlisten konfigurierbar)</li>
+          <li>Konzeption eines ERP-Dashboards auf Basis einer Cloud-Infrastruktur (u. a. Nutzung von AWS-Komponenten in der Planung) zur transparenten Darstellung von Kennzahlen und Projektfortschritt.</li>
+          <li>Erstellung eines vollständigen Projektstrukturplans (WBS) inklusive Aufwandsschätzung, COCOMO-orientierter Kalkulation, Terminplanung und Ermittlung des kritischen Pfads in MS Project.</li>
+          <li>Aufbau eines Risikoregisters sowie Durchführung einer Stakeholder-Analyse mit Bewertung von Interessen und Einfluss.</li>
+          <li>Kombination klassischer Projektmanagement-Methoden mit agilen Elementen (Scrum-orientierte Planung, Sprints, Reviews).</li>
         </ul>
-      </div>
+      </article>
 
-      <div class="content-block">
-        <h3>Projektmanagement Modul</h3>
-        <p><strong>Zeitraum:</strong> 6 Monate – Note 1,0</p>
+      <article class="block">
+        <h3>Weitere Arbeiten</h3>
         <ul>
-          <li>Komplexe Projektplanung mit WBS, Risikoanalysen und Stakeholder-Analyse</li>
+          <li>Interaktives Buzzword-Bingo-Mehrspielerspiel in Python (Textual) mit Shared-Memory-Kommunikation.</li>
+          <li>Kleinere Automatisierungs- und Infrastrukturprojekte im privaten Umfeld (Scripting, Tooling, Systemkonfiguration).</li>
         </ul>
+      </article>
+    </section>
+
+    <!-- KONTAKT -->
+    <section id="kontakt" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Kontakt</h2>
+        <button class="btn-back" onclick="showSection('home')">← Zurück</button>
       </div>
 
-      <div class="content-block">
-        <h3>Software-Engineering Modul</h3>
-        <p><strong>Zeitraum:</strong> 6 Monate – Note 1,0</p>
-        <ul>
-          <li>BPMN-/UML-Modellierung, ER-Modelle, Architekturkonzepte und Implementierung</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- Kontakt Section -->
-  <div id="kontakt" class="section">
-    <div class="container">
-      <button class="btn btn-back" onclick="showSection('home')">← Zurück</button>
-      <h2 class="section-title">Kontakt &amp; Anfrage</h2>
-      
-      <div class="content-block">
-        <h3>Kontaktinformationen</h3>
+      <article class="block">
+        <h3>Direkter Kontakt</h3>
         <p><strong>E-Mail:</strong> boukayouabilal@icloud.com</p>
         <p><strong>Telefon:</strong> +49 155 66030541</p>
-      </div>
+        <p class="muted">Bevorzugt werden Anfragen per E-Mail mit kurzer Beschreibung des Anliegens.</p>
+      </article>
 
-      <div class="content-block">
+      <article class="block">
         <h3>Kontaktformular</h3>
-        <form action="https://formspree.io/f/mjkqwvbo" method="POST" id="contactForm">
+        <form action="https://formspree.io/f/mjkqwvbo" method="POST">
           <div class="form-group">
             <label for="vorname">Vorname *</label>
-            <input type="text" id="vorname" name="Vorname" required>
+            <input id="vorname" name="Vorname" type="text" required>
           </div>
           <div class="form-group">
             <label for="nachname">Nachname *</label>
-            <input type="text" id="nachname" name="Nachname" required>
+            <input id="nachname" name="Nachname" type="text" required>
           </div>
           <div class="form-group">
             <label for="email">E-Mail *</label>
-            <input type="email" id="email" name="Email" required>
+            <input id="email" name="Email" type="email" required>
           </div>
           <div class="form-group">
             <label for="telefon">Telefonnummer</label>
-            <input type="tel" id="telefon" name="Telefon">
+            <input id="telefon" name="Telefon" type="tel">
           </div>
           <div class="form-group">
             <label for="nachricht">Nachricht / Projektbeschreibung *</label>
             <textarea id="nachricht" name="Nachricht" required></textarea>
           </div>
 
-          <input type="hidden" name="_replyto" value="boukayouabilal@icloud.com">
           <input type="hidden" name="_subject" value="Neue Anfrage über bb-it-services.com">
 
-          <button type="submit" class="btn">Anfrage senden</button>
+          <button type="submit" class="btn-primary">
+            Anfrage senden
+          </button>
+          <p class="hint">
+            Das Formular wird über Formspree versendet. Prüfe bei der ersten Anfrage ggf. Spam/Unbekannt, um die Bestätigung
+            von Formspree zu sehen.
+          </p>
         </form>
-        <div id="successMessage" class="success-message">
-          Danke für deine Anfrage! Bitte bestätige deine E-Mail über Formspree, falls nötig.
-        </div>
-      </div>
-    </div>
-  </div>
+      </article>
+    </section>
 
-  <!-- Rechtliches Section -->
-  <div id="recht" class="section">
-    <div class="container">
-      <button class="btn btn-back" onclick="showSection('home')">← Zurück</button>
-      <h2 class="section-title">Rechtliches &amp; Datenschutz</h2>
-      
-      <div class="content-block">
+    <!-- RECHTLICHES -->
+    <section id="recht" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Rechtliches</h2>
+        <button class="btn-back" onclick="showSection('home')">← Zurück</button>
+      </div>
+
+      <article class="block">
         <h3>Impressum</h3>
-        <p><strong>Verantwortlicher:</strong></p>
-        <p>Bilal Boukayoua<br>
-        E-Mail: boukayouabilal@icloud.com<br>
-        Telefon: +49 155 66030541</p>
-      </div>
+        <p><strong>Verantwortlich für den Inhalt dieser Seite:</strong></p>
+        <p>
+          Bilal Boukayoua<br>
+          (Privatperson / freiberufliche IT-Tätigkeiten)<br>
+          E-Mail: boukayouabilal@icloud.com<br>
+          Telefon: +49 155 66030541
+        </p>
+      </article>
 
-      <div class="content-block">
-        <h3>Datenschutzerklärung</h3>
-        <p><strong>1. Datenschutz auf einen Blick</strong></p>
-        <p>Diese Website erhebt, nutzt und verarbeitet personenbezogene Daten nur im notwendigen Umfang und entsprechend den Bestimmungen der DSGVO.</p>
-        
-        <p style="margin-top: 15px;"><strong>2. Kontaktformular</strong></p>
-        <p>Wenn du das Kontaktformular ausfüllst, werden deine Angaben (Name, E-Mail, Telefon, Nachricht) gespeichert und für die Beantwortung deiner Anfrage verwendet und über Formspree an deine E-Mail weitergeleitet.</p>
-        
-        <p style="margin-top: 15px;"><strong>3. Cookies &amp; Tracking</strong></p>
-        <p>Diese Website nutzt keine Cookies oder Tracking-Tools.</p>
-      </div>
-    </div>
-  </div>
+      <article class="block">
+        <h3>Datenschutzhinweise (Kurzfassung)</h3>
+        <p>
+          Es werden keine Tracking-Cookies, Analyse-Tools oder Social-Media-Plugins eingesetzt. Beim Besuch der Seite
+          fallen nur technisch notwendige Verbindungsdaten an, die vom Hostinganbieter verarbeitet werden.
+        </p>
+        <p>
+          Bei Nutzung des Kontaktformulars werden die eingegebenen Daten (Name, E-Mail, optional Telefon, Nachricht)
+          über den Dienst Formspree an die oben genannte E-Mail-Adresse übermittelt und ausschließlich zur Bearbeitung
+          der Anfrage verwendet. Eine Weitergabe an Dritte findet nicht statt.
+        </p>
+        <p>
+          Du hast das Recht auf Auskunft, Berichtigung oder Löschung deiner Daten, soweit keine gesetzlichen
+          Aufbewahrungspflichten entgegenstehen.
+        </p>
+      </article>
+
+      <article class="block">
+        <h3>Haftungsausschluss</h3>
+        <p>
+          Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und
+          Aktualität der Inhalte wird keine Gewähr übernommen. Trotz sorgfältiger inhaltlicher Kontrolle wird keine
+          Haftung für externe Links übernommen; für deren Inhalte sind ausschließlich die jeweiligen Betreiber
+          verantwortlich.
+        </p>
+      </article>
+    </section>
+
+    <footer>
+      © 2025 Bilal Boukayoua. Alle Rechte vorbehalten.
+    </footer>
+  </main>
 
   <script>
-    // Initialize Code Background
-    function initCodeBackground() {
-      const codeSnippets = [
-        'const portfolio = { name: "Bilal", skills: ["Java", "Python", "SQL"] }',
-        'public class ITSpecialist { public void consultWithClients() {} }',
-        'SELECT * FROM projects WHERE status = "completed" AND rating = 1.0',
-        'function deployWebsite() { return "success"; }',
-        'class DataMigration { def migrate(self): pass }',
-        'SELECT customer_id, COUNT(*) FROM orders GROUP BY customer_id',
-        'interface ITServices { void provideSupport(); void handleRZ(); }',
-        'git commit -m "Deploy portfolio website successfully"',
-        'npm install && npm run build && npm start',
-        'def encrypt_data(data): return hashlib.sha256(data.encode()).hexdigest()'
-      ];
-
-      const colors = ['#06b6d4', '#a855f7', '#ec4899', '#fbbf24', '#10b981'];
-      const background = document.getElementById('codeBackground');
-
-      codeSnippets.forEach((snippet, index) => {
-        const line = document.createElement('div');
-        line.className = 'code-line';
-        line.textContent = snippet;
-        line.style.color = colors[index % colors.length];
-        line.style.top = Math.random() * 100 + '%';
-        line.style.animationDuration = (15 + Math.random() * 20) + 's';
-        line.style.animationDelay = (Math.random() * 5) + 's';
-        background.appendChild(line);
-      });
+    function showSection(id) {
+      document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+      const target = document.getElementById(id);
+      if (target) target.classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
-
-    function showSection(sectionId) {
-      document.querySelectorAll('.section').forEach(section => {
-        section.classList.remove('active');
-      });
-      document.getElementById(sectionId).classList.add('active');
-      window.scrollTo(0, 0);
-    }
-
-    // Optional: nur visuelle Bestätigung nach Submit (Formspree macht den echten Versand)
-    const form = document.getElementById('contactForm');
-    if (form) {
-      form.addEventListener('submit', function() {
-        const msg = document.getElementById('successMessage');
-        if (msg) msg.classList.add('show');
-      });
-    }
-
-    window.addEventListener('load', initCodeBackground);
   </script>
 </body>
 </html>
